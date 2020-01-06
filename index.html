@@ -1,0 +1,232 @@
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Divisor de salário</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="sticky-footer.css" />
+    <style>
+        /* página */
+        label{width: 100%;}.row{margin-top: 4vh;}#infos-funcionarios{display: none;margin-left: 4vw;}.content{width: 80vw;margin: 0 auto;}.dot {height: 25px;width: 25px;border-radius: 50%;display: inline-block;margin-left: 90%;}
+        /* Chart.js */
+        @keyframes chartjs-render-animation{from{opacity:.99}to{opacity:1}}.chartjs-render-monitor{animation:chartjs-render-animation 1ms}.chartjs-size-monitor,.chartjs-size-monitor-expand,.chartjs-size-monitor-shrink{position:absolute;direction:ltr;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1}.chartjs-size-monitor-expand>div{position:absolute;width:1000000px;height:1000000px;left:0;top:0}.chartjs-size-monitor-shrink>div{position:absolute;width:200%;height:200%;left:0;top:0}
+    </style>
+</head>
+    <main>
+        <div class="content">
+            <div class="row">
+                <div class="col col-md-12">
+                    <h3>Divisão de salário</h3>
+                    <hr />
+                    <div class="row  input-group mb-2">
+                        <label for="receita-bruta">Quanto você recebe por mês (Valor líquido    )</label>
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">R$</span>
+                        </div>
+                        <input id="receita-bruta" class="form-control money" type="text" required="required" pattern="[0-9]{0,10}[,]{1,1}[0-9]{0,4}" placeholder="Salário líquido em R$. Ex.: 2000,00" />
+                        <button id="botao-receita" disabled type="button" class="btn btn-success" onclick="updateCharts()" style="margin-left: 10vw;">Processar salário</button>
+                    </div>
+                    <br />
+                    <hr />
+                </div>
+            </div>
+            <div id="graficos" class="row" style="display: none;">
+                <h5>Escolha o que melhor define seus objetivos</h5>
+                <div class="nav nav-tabs nav-fill" role="tablist">
+                    <a class="nav-item nav-link" href="#reserva" role="tab" data-toggle="tab" aria-controls="nav-home" aria-selected="true" onclick="scrollToCharts()">Reserva de emergêcia</a>
+                    <a class="nav-item nav-link" href="#aposentadoria" role="tab" data-toggle="tab" aria-controls="nav-home" aria-selected="true" onclick="scrollToCharts()">Me aposentar</a>
+                    <a class="nav-item nav-link active" href="#enriquecer" role="tab" data-toggle="tab" aria-controls="nav-home" aria-selected="true" onclick="scrollToCharts()">Acumular patrimônio</a>
+                    <a class="nav-item nav-link" href="#empreender" role="tab" data-toggle="tab" aria-controls="nav-home" aria-selected="true" onclick="scrollToCharts()">Abrir uma empresa</a class="nav-link">
+                </div>
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane fade in active" id="reserva">
+                        <div class="row">
+                            <div class="col col-md-6"  style="margin-top: 5vh;">
+                                <canvas id="tortaReserva" style="display: block; width: 540px; height: 270px;" width="540" height="270" class="chartjs-render-monitor"></canvas>
+                            </div>
+                            <div class="col col-md-6">
+                                <div class="row">
+                                    <div class="col col-md-2">
+                                        <div id="cortrees" class="dot"></div>
+                                    </div>
+                                    <div class="col col-md-10">
+                                        <label>50% &#10144; Essencial: R$<span id="trEssencial"></span></label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col col-md-2">
+                                        <div id="cortrer" class="dot"></div>
+                                    </div>
+                                    <div class="col col-md-10">
+                                        <label>40% &#10144; Reserva de emergência: R$<span id="trReserva"></span></label>
+                                    </div>
+                                </div>
+                                <div  class="row">
+                                    <div class="col col-md-2">
+                                        <div id="cortreed" class="dot"></div>
+                                    </div>
+                                    <div class="col col-md-10">
+                                        <label>5%  &#10144; Educação: R$<span id="trEducacao"></span></label>
+                                    </div>
+                                </div>
+                                <div  class="row">
+                                    <div class="col col-md-2">
+                                        <div id="cortredi" class="dot"></div>
+                                    </div>
+                                    <div class="col col-md-10">
+                                        <label>5%  &#10144; Diversão: R$<span id="trDiversao"></span></label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade in active" id="aposentadoria">
+                        <div class="row">
+                            <div class="col col-md-6"  style="margin-top: 5vh;">
+                                <canvas id="tortaAposentada" style="display: block; width: 540px; height: 270px;" width="540" height="270" class="chartjs-render-monitor"></canvas>
+                            </div>
+                            <div class="col col-md-6">
+                                <div class="row">
+                                    <div class="col col-md-2">
+                                        <div id="cortaes" class="dot"></div>
+                                    </div>
+                                    <div class="col col-md-10">
+                                        <label>50% &#10144; Essencial: R$<span id="taEssencial"></span></label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col col-md-2">
+                                        <div id="cortar" class="dot"></div>
+                                    </div>
+                                    <div class="col col-md-10">
+                                        <label>30% &#10144; Reserva aposentadoria: R$<span id="taReserva"></span></label>
+                                    </div>
+                                </div>
+                                <div  class="row">
+                                    <div class="col col-md-2">
+                                        <div id="cortao" class="dot"></div>
+                                    </div>
+                                    <div class="col col-md-10">
+                                        <label>10% &#10144; Objetivos e metas: R$<span id="taObjetivos"></span></label>
+                                    </div>
+                                </div>
+                                <div  class="row">
+                                    <div class="col col-md-2">
+                                        <div id="cortad" class="dot"></div>
+                                    </div>
+                                    <div class="col col-md-10">
+                                        <label>10%  &#10144; Diversão: R$<span id="taDiversao"></span></label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade" id="enriquecer">
+                        <div class="row">
+                            <div class="col col-md-6"  style="margin-top: 5vh;">
+                                <canvas id="tortaRica" style="display: block; width: 540px; height: 270px;" width="540" height="270" class="chartjs-render-monitor"></canvas>
+                            </div>
+                            <div class="col col-md-6">
+                                <div class="row">
+                                    <div class="col col-md-2">
+                                        <div id="cortres" class="dot"></div>
+                                    </div>
+                                    <div class="col col-md-10">
+                                        <label>50% &#10144; Essencial: R$<span id="trEssencial"></span></label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col col-md-2">
+                                        <div id="cortri" class="dot"></div>
+                                    </div>
+                                    <div class="col col-md-10">
+                                        <label>35% &#10144; Investimentos (patrimônio): R$<span id="trInvestimento"></span></label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col col-md-2">
+                                        <div id="cortred" class="dot"></div>
+                                    </div>
+                                    <div class="col col-md-10">
+                                        <label>10%  &#10144; Educação: R$<span id="trEducacao"></span></label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col col-md-2">
+                                        <div id="cortrd" class="dot"></div>
+                                    </div>
+                                    <div class="col col-md-10">
+                                        <label>5%  &#10144; Diversão: R$<span id="trDiversao"></span></label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade" id="empreender">
+                        <div class="row">
+                            <div class="col col-md-6" style="margin-top: 5vh;">
+                                <canvas id="tortaEmpresaria" style="display: block; width: 540px; height: 270px;" width="540" height="270" class="chartjs-render-monitor"></canvas>
+                            </div>
+                            <div class="col col-md-6">
+                                <div class="row">
+                                    <div class="col col-md-2">
+                                        <div id="cortees" class="dot"></div>
+                                    </div>
+                                    <div class="col col-md-10">
+                                        <label>50% &#10144; Essencial: R$<span id="teEssencial"></span></label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col col-md-2">
+                                        <div id="corterp" class="dot"></div>
+                                    </div>
+                                    <div class="col col-md-10">
+                                        <label>5% &#10144; Investimentos pessoais: R$<span id="teInvestimentosP"></span></label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col col-md-2">
+                                        <div id="cortep" class="dot"></div>                                        
+                                    </div>
+                                    <div class="col col-md-10">
+                                        <label>25% &#10144; Investimento inicial do negócio: R$<span id="teInvestimentoN"></span></label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col col-md-2">
+                                        <div id="corteed" class="dot"></div>
+                                    </div>
+                                    <div class="col col-md-10">
+                                        <label>15%  &#10144; Educação: R$<span id="teEducacao"></span></label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col col-md-2">
+                                        <div id="corted" class="dot"></div>
+                                    </div>
+                                    <div class="col col-md-10">
+                                        <label>5%  &#10144; Diversão: R$<span id="teDiversao"></span></label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+        <script async="" src="//www.google-analytics.com/analytics.js"></script>
+        <script src="utils.js"></script>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+        <script src="calculador-salario.js"></script>
+        <script src="maskMoney.js"></script>
+        <script>
+            $(document).ready(function() {
+                validate();
+                $('input').on('keyup', validate);
+            });
+        </script>
+    </main>
+</html>
