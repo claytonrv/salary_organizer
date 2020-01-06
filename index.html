@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="sticky-footer.css" />
     <style>
         /* página */
-        label{width: 100%;}.row{margin-top: 4vh;}#infos-funcionarios{display: none;margin-left: 4vw;}.content{width: 80vw;margin: 0 auto;}.dot {height: 25px;width: 25px;border-radius: 50%;display: inline-block;margin-left: 90%;}
+        label{width: 100%;}.row{margin-top: 4vh;}#infos-funcionarios{display: none;margin-left: 4vw;}.content{width: 80vw;margin: 0 auto;}.dot {height: 25px;width: 25px;border-radius: 50%;display: inline-block;margin-left: 90%;}.tab-content{height: 100%;}blockquote{border-left: 3px solid rgba(42, 42, 42, 0.15);padding-top: 0;padding-bottom:0;padding: 10px 20px;margin: 0 0 20px;font-size: 17.5px;font-size: 19px;line-height: 26px;color: #808080;}.info_text{height: 100%}.info_text p{text-indent: 4em;}
         /* Chart.js */
         @keyframes chartjs-render-animation{from{opacity:.99}to{opacity:1}}.chartjs-render-monitor{animation:chartjs-render-animation 1ms}.chartjs-size-monitor,.chartjs-size-monitor-expand,.chartjs-size-monitor-shrink{position:absolute;direction:ltr;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1}.chartjs-size-monitor-expand>div{position:absolute;width:1000000px;height:1000000px;left:0;top:0}.chartjs-size-monitor-shrink>div{position:absolute;width:200%;height:200%;left:0;top:0}
     </style>
@@ -80,8 +80,38 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="row">
+                            <div class="col col-md-12 info_text">
+                                <hr />
+                                <h4  style="text-align: center">Reseverva de emergência</h4>
+                                <div class="row">
+                                    <div class="col col-md-6">
+                                        <p> Antes de pensarmos em investimentos, aposentadoria ou abrir uma empresa, precisamos garantir que se, digamos, tudo der errado, você ainda conseguirá manter o seu padrão de vida por algum tempo. Em geral, usamos o tempo de 6 à 12 meses como boas quantidades de reserva de emergência. </p>
+                                        <p> Agora, o que significa essa tal de reserva de emergência? 
+                                            <blockquote>É o dinheiro que uso se eu precisar de um sapato novo ou trocar de carro?</blockquote>
+                                            Com certeza absoluta, <span style="font-weight: bolder;">NÃO!</span>
+                                        </p>  
+                                    </div>
+                                    <div class="col col-md-6" style="border-left: 1px solid rgba(42, 42, 42, 0.15);}">
+                                        <p>A reserva de emergência, como o nome diz, é para emergências. Digamos que você perda o seu emprego, sofra um acidente ou precise de tratamento médico imediato, para você ou sua família, todos estes são exemplos de emergência, na qual você precisa (em geral) de uma quantidade maior de dinheiro e "pra ontem". 
+                                        </p>
+                                        <p>
+                                            Ter uma reserva de emergência, garante que nestes casos, você consiga manter seu padrão de vida, sem criar dívidas, para resolver estes problemas pontuais. No caso de perder o emprego, garante que você consiga manter suas despesas até conseguir um novo emprego ou mesmo abrir seu negócio.
+                                        </p>
+                                    </div>
+                                </div>
+                                    <br />
+                                    <hr />
+                                    <br />
+                                    <p> Lembra que falamos sobre os 6 ou 12 meses? Pois é, isso é muito importante na hora de calcular a sua reserva. O valor total da reserva deve ser de 6 ou 12 vezes o seu custo mensal. Vamos ao exemplo:</p>  
+                                    <span>Se você gasta R$1500,00 por mês com aluguel, água, luz, condomínio, transporte, alimentação (todas as coisas que você não poderia sobreviver sem - de verdade) e ainda gasta mais cerca de R$500,00 com educação de diversão, você precisaria ter o equivalente a R$12.000,00 (12 mil reais) para se manter por 6 meses e R$24.000,00 (24 mil reais) para se manter por 1 ano.</span>
+                                    <br />
+                                    <br />
+                                    <h5 style="text-align: center;"> Agora que resolvemos a reserva de emergência, podemos falar de objetivos e metas.</h5>
+                            </div>
+                        </div>
                     </div>
-                    <div role="tabpanel" class="tab-pane fade in active" id="aposentadoria">
+                    <div role="tabpanel" class="tab-pane fade in" id="aposentadoria">
                         <div class="row">
                             <div class="col col-md-6"  style="margin-top: 5vh;">
                                 <canvas id="tortaAposentada" style="display: block; width: 540px; height: 270px;" width="540" height="270" class="chartjs-render-monitor"></canvas>
