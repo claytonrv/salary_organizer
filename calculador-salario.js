@@ -455,3 +455,22 @@ $("#tortaEmpresaria").on('click', function(event) {
         }
     });
 });
+
+$(document).ready(function () {
+    $('.nav-toggle').click(function () {
+        var collapse_content_selector = $(this).attr('href');
+        var toggle_switch = $(this);
+        $(collapse_content_selector).toggle(function () {
+            if ($(this).css('display') == 'none') {
+                //toggle_switch.html('Read More');
+                $('.arrow').css('transform', 'rotate(0deg)');
+                scrollToCharts()
+            } else {
+                //toggle_switch.css('display', 'none');
+                $('.arrow').css('transform', 'rotate(180deg)');
+                scrollTo('#collapse')
+            }
+        });
+    });
+
+});

@@ -5,10 +5,51 @@
     <title>Divisor de salário</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/css?family=Orienta|Righteous&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="sticky-footer.css" />
     <style>
         /* página */
-        label{width: 100%;}.row{margin-top: 4vh;}#infos-funcionarios{display: none;margin-left: 4vw;}.content{width: 80vw;margin: 0 auto;}.dot {height: 25px;width: 25px;border-radius: 50%;display: inline-block;margin-left: 90%;}.tab-content{height: 100%;}blockquote{border-left: 3px solid rgba(42, 42, 42, 0.15);padding-top: 0;padding-bottom:0;padding: 10px 20px;margin: 0 0 20px;font-size: 17.5px;font-size: 19px;line-height: 26px;color: #808080;}.info_text{height: 100%}.info_text p{text-indent: 4em;}
+        .arrow{
+            position: absolute;
+            top: 20vh;
+            left: 50%;
+            transform: translate(-50%,-50%);
+        }
+        .arrow span{
+            display: block;
+            width: 30px;
+            height: 30px;
+            border-bottom: 5px solid black;
+            border-right: 5px solid black;
+            transform: rotate(45deg);
+            margin: -10px;
+            animation: animate 2s infinite;
+        }
+        .arrow span:nth-child(2){
+            animation-delay: -0.2s;
+        }
+        .arrow span:nth-child(3){
+            animation-delay: -0.4s;
+        }
+        @keyframes animate {
+            0%{
+                opacity: 0;
+                transform: rotate(45deg) translate(-20px,-20px);
+            }
+            50%{
+                opacity: 1;
+            }
+            100%{
+                opacity: 0;
+                transform: rotate(45deg) translate(20px,20px);
+            }
+        }
+        h2 { font-size: 20px; letter-spacing: -1px; color: #000C; text-transform: uppercase; text-shadow: 1px 1px 0 #000, margin: 10px 0 24px; text-align: justify; line-height: 30px}
+        .reserve_info{padding: 0.7vw;border: 10px solid #000B;}
+        h1{color:#000C;font-family: 'Righteous', cursive; font-size: 65px; font-weight: normal; line-height: 60px; margin: 10px 0 20px; text-transform: uppercase; text-shadow: 2px 2px 0 #000, margin: 10px 0 24px; text-align: center;}
+        p {font-family: 'Orienta', sans-serif; font-size: 18px; line-height: 24px; margin: 0 0 24px; text-align: center; }
+        label{font-family: 'Orienta', sans-serif; font-size: 18px; line-height: 24px; margin: 0 0 24px;width: 100%;}.row{margin-top: 4vh;}#infos-funcionarios{display: none;margin-left: 4vw;}.content{width: 80vw;margin: 0 auto;}.dot {height: 25px;width: 25px;border-radius: 50%;display: inline-block;margin-left: 90%;}.tab-content{height: 100%;}blockquote{border-left: 3px solid rgba(42, 42, 42, 0.15);padding-top: 0;padding-bottom:0;padding: 10px 20px;margin: 0 0 20px;font-size: 17.5px;font-size: 19px;line-height: 26px;color: #808080;}.info_text{height: 100%}.info_text>p{text-indent: 4em;}
         /* Chart.js */
         @keyframes chartjs-render-animation{from{opacity:.99}to{opacity:1}}.chartjs-render-monitor{animation:chartjs-render-animation 1ms}.chartjs-size-monitor,.chartjs-size-monitor-expand,.chartjs-size-monitor-shrink{position:absolute;direction:ltr;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1}.chartjs-size-monitor-expand>div{position:absolute;width:1000000px;height:1000000px;left:0;top:0}.chartjs-size-monitor-shrink>div{position:absolute;width:200%;height:200%;left:0;top:0}
     </style>
@@ -17,7 +58,7 @@
         <div class="content">
             <div class="row">
                 <div class="col col-md-12">
-                    <h3>Divisão de salário</h3>
+                    <h1>Divisão de salário</h1>
                     <hr />
                     <div class="row  input-group mb-2">
                         <label for="receita-bruta">Quanto você recebe por mês (Valor líquido    )</label>
@@ -31,10 +72,10 @@
                     <hr />
                 </div>
             </div>
-            <div id="graficos" class="row" style="display: none;">
-                <h5>Escolha o que melhor define seus objetivos</h5>
+            <div id="graficos" class="row" style="display: none;padding-top: 8vh;">
+                <h4>Escolha o que melhor define seus objetivos</h4>
                 <div class="nav nav-tabs nav-fill" role="tablist">
-                    <a class="nav-item nav-link" href="#reserva" role="tab" data-toggle="tab" aria-controls="nav-home" aria-selected="true" onclick="scrollToCharts()">Reserva de emergêcia</a>
+                    <a class="nav-item nav-link" href="#reserva" role="tab" data-toggle="tab" aria-controls="nav-home" aria-selected="true" onclick="scrollToCharts()">Criar reserva de emergêcia</a>
                     <a class="nav-item nav-link" href="#aposentadoria" role="tab" data-toggle="tab" aria-controls="nav-home" aria-selected="true" onclick="scrollToCharts()">Me aposentar</a>
                     <a class="nav-item nav-link active" href="#enriquecer" role="tab" data-toggle="tab" aria-controls="nav-home" aria-selected="true" onclick="scrollToCharts()">Acumular patrimônio</a>
                     <a class="nav-item nav-link" href="#empreender" role="tab" data-toggle="tab" aria-controls="nav-home" aria-selected="true" onclick="scrollToCharts()">Abrir uma empresa</a class="nav-link">
@@ -83,31 +124,56 @@
                         <div class="row">
                             <div class="col col-md-12 info_text">
                                 <hr />
-                                <h4  style="text-align: center">Reseverva de emergência</h4>
-                                <div class="row">
+                                <br />
+                                <h1  style="text-align: center;">Reseverva de emergência</h1>
+                                <a href="#collapse" class="nav-toggle">
+                                    <div style="width:100%;height:8vh">                                
+                                        <div class="arrow">
+                                            <span></span>
+                                            <span></span>
+                                        </div>
+                                    </div>
+                                </a>
+                                <div id="collapse" class="row" style="display: none">
                                     <div class="col col-md-6">
-                                        <p> Antes de pensarmos em investimentos, aposentadoria ou abrir uma empresa, precisamos garantir que se, digamos, tudo der errado, você ainda conseguirá manter o seu padrão de vida por algum tempo. Em geral, usamos o tempo de 6 à 12 meses como boas quantidades de reserva de emergência. </p>
-                                        <p> Agora, o que significa essa tal de reserva de emergência? 
-                                            <blockquote>É o dinheiro que uso se eu precisar de um sapato novo ou trocar de carro?</blockquote>
-                                            Com certeza absoluta, <span style="font-weight: bolder;">NÃO!</span>
-                                        </p>  
+                                        <img src="https://images.pexels.com/photos/12619/house-money-capitalism-fortune-12619.jpg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" style="width: 100%">
                                     </div>
                                     <div class="col col-md-6" style="border-left: 1px solid rgba(42, 42, 42, 0.15);}">
+                                        <p> Antes de pensarmos em investimentos, aposentadoria ou abrir uma empresa, precisamos garantir que se, digamos, tudo der errado, você ainda conseguirá manter o seu padrão de vida por algum tempo. Em geral, usamos o tempo de 6 à 12 meses como boas quantidades de reserva de emergência. </p>
+                                        <h2  style="font-size: 18px"> Agora, o que significa essa tal de reserva de emergência? 
+                                            <blockquote style="margin-top:2vh">É o dinheiro que uso se eu precisar de um sapato novo ou trocar de carro?</blockquote>
+                                            Com certeza absoluta, <span style="font-weight: bolder;">NÃO!</span>
+                                        </h2>  
                                         <p>A reserva de emergência, como o nome diz, é para emergências. Digamos que você perda o seu emprego, sofra um acidente ou precise de tratamento médico imediato, para você ou sua família, todos estes são exemplos de emergência, na qual você precisa (em geral) de uma quantidade maior de dinheiro e "pra ontem". 
                                         </p>
                                         <p>
                                             Ter uma reserva de emergência, garante que nestes casos, você consiga manter seu padrão de vida, sem criar dívidas, para resolver estes problemas pontuais. No caso de perder o emprego, garante que você consiga manter suas despesas até conseguir um novo emprego ou mesmo abrir seu negócio.
                                         </p>
                                     </div>
-                                </div>
-                                    <br />
-                                    <hr />
-                                    <br />
-                                    <p> Lembra que falamos sobre os 6 ou 12 meses? Pois é, isso é muito importante na hora de calcular a sua reserva. O valor total da reserva deve ser de 6 ou 12 vezes o seu custo mensal. Vamos ao exemplo:</p>  
-                                    <span>Se você gasta R$1500,00 por mês com aluguel, água, luz, condomínio, transporte, alimentação (todas as coisas que você não poderia sobreviver sem - de verdade) e ainda gasta mais cerca de R$500,00 com educação de diversão, você precisaria ter o equivalente a R$12.000,00 (12 mil reais) para se manter por 6 meses e R$24.000,00 (24 mil reais) para se manter por 1 ano.</span>
-                                    <br />
-                                    <br />
-                                    <h5 style="text-align: center;"> Agora que resolvemos a reserva de emergência, podemos falar de objetivos e metas.</h5>
+                                    <p style="margin-top:4vh"> Lembra que falamos sobre os 6 ou 12 meses? Pois é, isso é muito importante na hora de calcular a sua reserva. O valor total da reserva deve ser de 6 ou 12 vezes o seu custo mensal. Vamos ver um exemplo:</p> 
+                                    <div class="row reserve_info">
+                                        <div class="col col-md-4">
+                                            <p style="text-align: justify; height: 100%; height: 100%;padding: 1vw 2vw 2vw 2vw;border-right: 1px solid gray;text-align: justify;">Digamos que estes, ao lado, são seus gastos mensais recorrentes, ou seja, esses são os valores que você gasta fixamente, todos os meses e que você não pode "sobreviver" sem. Por isso neste caso não colocamos, por exemplo os gastos com carro (especificamente), mas se no seu caso é algo totalmente necessário para o seu dia-a-dia entra nessa conta também.</p>
+                                        </div>
+                                        <div class="col col-md-4" style="padding-top: 4vh;">
+                                            <p>Aluguel: R$800,00</p>
+                                            <p>Água: R$60,00</p>
+                                            <p>Luz: R$85,00</p>
+                                            <p>Gás: R$90,00</p>
+                                            <p>Condomínio: R$250,00</p>
+                                            <p>Transporte: R$200,00</p>
+                                            <p>Alimentação: R$600,00</p>
+                                            <p>Educação: R$300,00</p>
+                                            <p>Diversão: R$200,00</p>
+                                            <hr />
+                                            <p>Total: R$2.585,00</p>
+                                        </div>
+                                        <div class="col col-md-4">
+                                            <p style="text-align: justify; height: 100%; height: 100%;padding: 2vw;border-left: 1px solid gray;text-align: justify;">Com estes valores de exemplo, podemos calcular quanto seria a sua reserva de emergência. Para o custo de R$2585,00 por mês o ideal seria ter uma reserva de emergência de R$15.510,00 (Quinze mil quinhentos e dez reais) para se manter por 6 meses. Para se manter por 1 ano, esse valor duplica: R$31.020,00 (Trinta e um mil e vinte reais).</p>
+                                        </div>
+                                    </div> 
+                                    <h5 style="margin-top:2vh;width:100%;text-align: center;height: 2vh"> Agora que resolvemos a reserva de emergência, podemos falar de objetivos e metas.</h5>
+                                </div>                                    
                             </div>
                         </div>
                     </div>
