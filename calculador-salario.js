@@ -29,7 +29,22 @@ function configureTortaReserva(salario){
                           return tooltipItem.yLabel;
                    }
                 }
-            }
+            },
+            hover: {
+                onHover: function(e) {
+                    try {
+                        var slice = this.getElementAtEvent(e);
+                        var indicatorId = slice[0]['_index'] + 1
+                        if(slice.length){
+                            $('#chart_labels').children('div').removeClass('indicators')
+                            $('#chart_labels .row:nth-child('+indicatorId+')').addClass('indicators');
+                        }
+                    } catch (error) {
+                        $('#chart_labels').children('div').removeClass('indicators');
+                        console.log("No chart identified.")
+                    }
+                }
+             }
         }
     };
 }
@@ -65,7 +80,23 @@ function configureTortaAposentada(salario){
                           return tooltipItem.yLabel;
                    }
                 }
-            }
+            },hover: {
+                onHover: function(e) {
+                    try {
+                        var slice = this.getElementAtEvent(e);
+                        console.log(slice)
+                        var indicatorId = slice[0]['_index'] + 1
+                        if(slice.length){
+                            $('#chart_labels').children('div').removeClass('indicators')
+                            $('#chart_labels .row:nth-child('+indicatorId+')').addClass('indicators');
+                        }
+                    } catch (error) {
+                        //console.log(error)
+                        $('#chart_labels').children('div').removeClass('indicators');
+                        console.log("No chart identified.")
+                    }
+                }
+             }
         }
     };
 }
@@ -101,7 +132,21 @@ function configureTortaRica(salario){
                           return tooltipItem.yLabel;
                    }
                 }
-            }
+            },hover: {
+                onHover: function(e) {
+                    try {
+                        var slice = this.getElementAtEvent(e);
+                        var indicatorId = slice[0]['_index'] + 1
+                        if(slice.length){
+                            $('#chart_labels').children('div').removeClass('indicators')
+                            $('#chart_labels .row:nth-child('+indicatorId+')').addClass('indicators');
+                        }
+                    } catch (error) {
+                        $('#chart_labels').children('div').removeClass('indicators');
+                        console.log("No chart identified.")
+                    }
+                }
+             }
         }
     };
 }
@@ -139,7 +184,21 @@ function configureTortaEmpreendedora(salario){
                           return tooltipItem.yLabel;
                    }
                 }
-            }
+            },hover: {
+                onHover: function(e) {
+                    try {
+                        var slice = this.getElementAtEvent(e);
+                        var indicatorId = slice[0]['_index'] + 1
+                        if(slice.length){
+                            $('#chart_labels').children('div').removeClass('indicators')
+                            $('#chart_labels .row:nth-child('+indicatorId+')').addClass('indicators');
+                        }
+                    } catch (error) {
+                        $('#chart_labels').children('div').removeClass('indicators');
+                        console.log("No chart identified.")
+                    }
+                }
+             }
         }
     };
 }
@@ -245,167 +304,6 @@ function scrollToCharts(){
     scrollTo("#graficos");
 }
 
-function selectionLabel(canvasId, labelColor){
-    if(canvasId == "tortaReserva"){
-        if(labelColor == "rgb(255, 186, 10)"){
-            $('#cortrees').parent().parent().css({'border':'1px solid black', 'box-shadow': '2px 4px 12px #888888', 'padding':'5px'});
-            $('#cortrer').parent().parent().css({'border':'none', 'box-shadow': 'none', 'padding':'0'});
-            $('#cortreed').parent().parent().css({'border':'none', 'box-shadow': 'none', 'padding':'0'});
-            $('#cortredi').parent().parent().css({'border':'none', 'box-shadow': 'none', 'padding':'0'});
-        }else if(labelColor == "rgb(0, 203, 230)"){
-            $('#cortrees').parent().parent().css({'border':'none', 'box-shadow': 'none', 'padding':'0'});
-            $('#cortrer').parent().parent().css({'border':'1px solid black', 'box-shadow': '2px 4px 12px #888888', 'padding':'5px'});
-            $('#cortreed').parent().parent().css({'border':'none', 'box-shadow': 'none', 'padding':'0'});
-            $('#cortredi').parent().parent().css({'border':'none', 'box-shadow': 'none', 'padding':'0'});
-        }else if(labelColor == "rgb(255, 46, 116)"){
-            $('#cortrees').parent().parent().css({'border':'none', 'box-shadow': 'none', 'padding':'0'});
-            $('#cortrer').parent().parent().css({'border':'none', 'box-shadow': 'none', 'padding':'0'});
-            $('#cortreed').parent().parent().css({'border':'1px solid black', 'box-shadow': '2px 4px 12px #888888', 'padding':'5px'});
-            $('#cortredi').parent().parent().css({'border':'none', 'box-shadow': 'none', 'padding':'0'});
-        }else if(labelColor == "rgb(46, 178, 50)"){
-            $('#cortrees').parent().parent().css({'border':'none', 'box-shadow': 'none', 'padding':'0'});
-            $('#cortrer').parent().parent().css({'border':'none', 'box-shadow': 'none', 'padding':'0'});
-            $('#cortreed').parent().parent().css({'border':'none', 'box-shadow': 'none', 'padding':'0'});
-            $('#cortredi').parent().parent().css({'border':'1px solid black', 'box-shadow': '2px 4px 12px #888888', 'padding':'5px'});
-        }
-    }else if(canvasId == "tortaAposentada"){
-        if(labelColor == "rgb(0, 0, 117)"){
-            $('#cortaes').parent().parent().css({'border':'1px solid black', 'box-shadow': '2px 4px 12px #888888', 'padding':'5px'});
-            $('#cortar').parent().parent().css({'border':'none', 'box-shadow': 'none', 'padding':'0'});
-            $('#cortao').parent().parent().css({'border':'none', 'box-shadow': 'none', 'padding':'0'});
-            $('#cortad').parent().parent().css({'border':'none', 'box-shadow': 'none', 'padding':'0'});
-        }else if(labelColor == "rgb(214, 89, 0)"){
-            $('#cortaes').parent().parent().css({'border':'none', 'box-shadow': 'none', 'padding':'0'});
-            $('#cortar').parent().parent().css({'border':'1px solid black', 'box-shadow': '2px 4px 12px #888888', 'padding':'5px'});
-            $('#cortao').parent().parent().css({'border':'none', 'box-shadow': 'none', 'padding':'0'});
-            $('#cortad').parent().parent().css({'border':'none', 'box-shadow': 'none', 'padding':'0'});
-        }else if(labelColor == "rgb(230, 0, 229)"){
-            $('#cortaes').parent().parent().css({'border':'none', 'box-shadow': 'none', 'padding':'0'});
-            $('#cortar').parent().parent().css({'border':'none', 'box-shadow': 'none', 'padding':'0'});
-            $('#cortao').parent().parent().css({'border':'1px solid black', 'box-shadow': '2px 4px 12px #888888', 'padding':'5px'});
-            $('#cortad').parent().parent().css({'border':'none', 'box-shadow': 'none', 'padding':'0'});
-        }else if(labelColor == "rgb(255, 194, 51)"){
-            $('#cortaes').parent().parent().css({'border':'none', 'box-shadow': 'none', 'padding':'0'});
-            $('#cortar').parent().parent().css({'border':'none', 'box-shadow': 'none', 'padding':'0'});
-            $('#cortao').parent().parent().css({'border':'none', 'box-shadow': 'none', 'padding':'0'});
-            $('#cortad').parent().parent().css({'border':'none', 'box-shadow': 'none', 'padding':'0'});
-        }else if(labelColor == "rgb(5, 155, 255)"){
-            $('#cortaes').parent().parent().css({'border':'none', 'box-shadow': 'none', 'padding':'0'});
-            $('#cortar').parent().parent().css({'border':'none', 'box-shadow': 'none', 'padding':'0'});
-            $('#cortao').parent().parent().css({'border':'none', 'box-shadow': 'none', 'padding':'0'});
-            $('#cortai').parent().parent().css({'border':'none', 'box-shadow': 'none', 'padding':'0'});
-            $('#cortaed').parent().parent().css({'border':'1px solid black', 'box-shadow': '2px 4px 12px #888888', 'padding':'5px'});
-            $('#cortad').parent().parent().css({'border':'none', 'box-shadow': 'none', 'padding':'0'});
-        }else if(labelColor == "rgb(0, 229, 230)"){
-            $('#cortaes').parent().parent().css({'border':'none', 'box-shadow': 'none', 'padding':'0'});
-            $('#cortar').parent().parent().css({'border':'none', 'box-shadow': 'none', 'padding':'0'});
-            $('#cortao').parent().parent().css({'border':'none', 'box-shadow': 'none', 'padding':'0'});
-            $('#cortai').parent().parent().css({'border':'none', 'box-shadow': 'none', 'padding':'0'});
-            $('#cortaed').parent().parent().css({'border':'none', 'box-shadow': 'none', 'padding':'0'});
-            $('#cortad').parent().parent().css({'border':'1px solid black', 'box-shadow': '2px 4px 12px #888888', 'padding':'5px'});
-        }
-    }else if(canvasId == "tortaRica"){
-        if(labelColor == "rgb(0, 117, 117)"){
-            $('#cortres').parent().parent().css({'border':'1px solid black', 'box-shadow': '2px 4px 12px #888888', 'padding':'5px'});
-            $('#cortri').parent().parent().css({'border':'none', 'box-shadow': 'none', 'padding':'0'});
-            $('#cortred').parent().parent().css({'border':'none', 'box-shadow': 'none', 'padding':'0'});
-            $('#cortrd').parent().parent().css({'border':'none', 'box-shadow': 'none', 'padding':'0'});
-        }else if(labelColor == "rgb(46, 123, 255)"){
-            $('#cortres').parent().parent().css({'border':'none', 'box-shadow': 'none', 'padding':'0'});
-            $('#cortri').parent().parent().css({'border':'1px solid black', 'box-shadow': '2px 4px 12px #888888', 'padding':'5px'});
-            $('#cortred').parent().parent().css({'border':'none', 'box-shadow': 'none', 'padding':'0'});
-            $('#cortrd').parent().parent().css({'border':'none', 'box-shadow': 'none', 'padding':'0'});
-        }else if(labelColor == "rgb(255, 77, 255)"){
-            $('#cortres').parent().parent().css({'border':'none', 'box-shadow': 'none', 'padding':'0'});
-            $('#cortri').parent().parent().css({'border':'none', 'box-shadow': 'none', 'padding':'0'});
-            $('#cortred').parent().parent().css({'border':'1px solid black', 'box-shadow': '2px 4px 12px #888888', 'padding':'5px'});
-            $('#cortrd').parent().parent().css({'border':'none', 'box-shadow': 'none', 'padding':'0'});
-        }else if(labelColor == "rgb(255, 145, 36)"){
-            $('#cortres').parent().parent().css({'border':'none', 'box-shadow': 'none', 'padding':'0'});
-            $('#cortri').parent().parent().css({'border':'none', 'box-shadow': 'none', 'padding':'0'});
-            $('#cortred').parent().parent().css({'border':'none', 'box-shadow': 'none', 'padding':'0'});
-            $('#cortrd').parent().parent().css({'border':'1px solid black', 'box-shadow': '2px 4px 12px #888888', 'padding':'5px'});
-        }
-    }else if(canvasId == "tortaEmpresaria"){
-        if(labelColor == "rgb(255, 61, 103)"){
-            $('#cortees').parent().parent().css({'border':'1px solid black', 'box-shadow': '2px 4px 12px #888888', 'padding':'5px'});
-            $('#corterp').parent().parent().css({'border':'none', 'box-shadow': 'none', 'padding':'0'});
-            $('#cortep'). parent().parent().css({'border':'none', 'box-shadow': 'none', 'padding':'0'});
-            $('#corteed').parent().parent().css({'border':'none', 'box-shadow': 'none', 'padding':'0'});
-            $('#corted'). parent().parent().css({'border':'none', 'box-shadow': 'none', 'padding':'0'});
-        }else if(labelColor == "rgb(34, 206, 206)"){
-            $('#cortees').parent().parent().css({'border':'none', 'box-shadow': 'none', 'padding':'0'});
-            $('#corterp').parent().parent().css({'border':'1px solid black', 'box-shadow': '2px 4px 12px #888888', 'padding':'5px'});
-            $('#cortep').parent().parent().css({'border':'none', 'box-shadow': 'none', 'padding':'0'});
-            $('#corteed').parent().parent().css({'border':'none', 'box-shadow': 'none', 'padding':'0'});
-            $('#corted').parent().parent().css({'border':'none', 'box-shadow': 'none', 'padding':'0'});
-        }else if(labelColor == "rgb(230, 195, 0)"){
-            $('#cortees').parent().parent().css({'border':'none', 'box-shadow': 'none', 'padding':'0'});
-            $('#corterp').parent().parent().css({'border':'none', 'box-shadow': 'none', 'padding':'0'});
-            $('#cortep').parent().parent().css({'border':'1px solid black', 'box-shadow': '2px 4px 12px #888888', 'padding':'5px'});
-            $('#corteed').parent().parent().css({'border':'none', 'box-shadow': 'none', 'padding':'0'});
-            $('#corted').parent().parent().css({'border':'none', 'box-shadow': 'none', 'padding':'0'});
-        }else if(labelColor == "rgb(68, 0, 117)"){
-            $('#cortees').parent().parent().css({'border':'none', 'box-shadow': 'none', 'padding':'0'});
-            $('#corterp').parent().parent().css({'border':'none', 'box-shadow': 'none', 'padding':'0'});
-            $('#cortep').parent().parent().css({'border':'none', 'box-shadow': 'none', 'padding':'0'});
-            $('#corteed').parent().parent().css({'border':'1px solid black', 'box-shadow': '2px 4px 12px #888888', 'padding':'5px'});
-            $('#corted').parent().parent().css({'border':'none', 'box-shadow': 'none', 'padding':'0'});
-        }else if(labelColor == "rgb(99, 230, 0)"){
-            $('#cortees').parent().parent().css({'border':'none', 'box-shadow': 'none', 'padding':'0'});
-            $('#corterp').parent().parent().css({'border':'none', 'box-shadow': 'none', 'padding':'0'});
-            $('#cortep').parent().parent().css({'border':'none', 'box-shadow': 'none', 'padding':'0'});
-            $('#corteed').parent().parent().css({'border':'none', 'box-shadow': 'none', 'padding':'0'});
-            $('#corted').parent().parent().css({'border':'1px solid black', 'box-shadow': '2px 4px 12px #888888', 'padding':'5px'});
-        }
-    }
-}
-
-function clearLabelSelection(canvasId){
-    if(canvasId == "tortaReserva"){
-        $('#cortres').parent().parent().css({'border':'none', 'box-shadow': 'none', 'padding':'0'});
-        $('#cortrr').parent().parent().css({'border':'none', 'box-shadow': 'none', 'padding':'0'});
-        $('#cortred').parent().parent().css({'border':'none', 'box-shadow': 'none', 'padding':'0'});
-        $('#cortrd').parent().parent().css({'border':'none', 'box-shadow': 'none', 'padding':'0'});
-    }else if(canvasId == "tortaAposentada"){
-        $('#cortaes').parent().parent().css({'border':'none', 'box-shadow': 'none', 'padding':'0'});
-        $('#cortar').parent().parent().css({'border':'none', 'box-shadow': 'none', 'padding':'0'});
-        $('#cortao').parent().parent().css({'border':'none', 'box-shadow': 'none', 'padding':'0'});
-        $('#cortad').parent().parent().css({'border':'none', 'box-shadow': 'none', 'padding':'0'});
-    }else if(canvasId == "tortaRica"){
-        $('#cortres').parent().parent().css({'border':'none', 'box-shadow': 'none', 'padding':'0'});
-        $('#cortri').parent().parent().css({'border':'none', 'box-shadow': 'none', 'padding':'0'});
-        $('#cortred').parent().parent().css({'border':'none', 'box-shadow': 'none', 'padding':'0'});
-        $('#cortrd').parent().parent().css({'border':'none', 'box-shadow': 'none', 'padding':'0'});
-    }else if(canvasId == "tortaEmpresaria"){
-        $('#cortees').parent().parent().css({'border':'none', 'box-shadow': 'none', 'padding':'0'});
-        $('#corterp').parent().parent().css({'border':'none', 'box-shadow': 'none', 'padding':'0'});
-        $('#cortep').parent().parent().css({'border':'none', 'box-shadow': 'none', 'padding':'0'});
-        $('#cortei').parent().parent().css({'border':'none', 'box-shadow': 'none', 'padding':'0'});
-        $('#corteed').parent().parent().css({'border':'none', 'box-shadow': 'none', 'padding':'0'});
-        $('#corted').parent().parent().css({'border':'none', 'box-shadow': 'none', 'padding':'0'});  
-    }
-}
-
-function chartSectionSelection(instance, event){
-    var activePoints = instance.getElementsAtEvent(event);
-    var chartId = activePoints[0]['_chart'].canvas.id;
-    if (activePoints.length > 0) {
-        if(activePoints[0]['_model'].innerRadius > 0){
-            clearLabelSelection(chartId);
-            activePoints[0]['_model'].innerRadius = activePoints[0]['_model'].innerRadius - 5;
-            activePoints[0]['_model'].outerRadius = activePoints[0]['_model'].outerRadius - 5;
-        } else{
-            var background = activePoints[0]['_view'].backgroundColor;
-            console.log("Background: "+background)
-            selectionLabel(chartId, background);
-            activePoints[0]['_model'].innerRadius = activePoints[0]['_model'].innerRadius + 5;
-            activePoints[0]['_model'].outerRadius = activePoints[0]['_model'].outerRadius + 5;
-        }
-    }     
-    instance.render(300, false);
-}
-
 function emptyInput(){
     return $("#receita-bruta").val() != 0.00;
 }
@@ -424,37 +322,9 @@ $(function(){
     $('#receita-bruta').maskMoney();
 });
 
-$("#tortaReserva").on('click', function(event) {
-    Chart.helpers.each(Chart.instances, function(instance){
-        if(instance.canvas.id == "tortaReserva"){
-            chartSectionSelection(instance, event)
-        }
-    });
-});
-
-$("#tortaAposentada").on('click', function(event) {
-    Chart.helpers.each(Chart.instances, function(instance){
-        if(instance.canvas.id == "tortaAposentada"){
-            chartSectionSelection(instance, event)
-        }
-    });
-});
-
-$("#tortaRica").on('click', function(event) {
-    Chart.helpers.each(Chart.instances, function(instance){
-        if(instance.canvas.id == "tortaRica"){
-            chartSectionSelection(instance, event)
-        }
-    });
-});
-
-$("#tortaEmpresaria").on('click', function(event) {
-    Chart.helpers.each(Chart.instances, function(instance){
-        if(instance.canvas.id == "tortaEmpresaria"){
-            chartSectionSelection(instance, event)
-        }
-    });
-});
+$(function () {
+    $('[data-toggle="popover"]').popover()
+})
 
 $(document).ready(function () {
     $('.nav-toggle').click(function () {

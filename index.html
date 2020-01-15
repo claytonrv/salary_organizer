@@ -9,12 +9,34 @@
     <link rel="stylesheet" href="sticky-footer.css" />
     <style>
         /* página */
+        .indicators{
+            border: 1px solid black !important; 
+            box-shadow: 2px 4px 12px #888888 !important;
+            padding: 5px !important;
+            cursor: help !important;
+        }
+
+        .division_indicators:hover{
+            border: 1px solid black; 
+            box-shadow: 2px 4px 12px #888888;
+            padding: 5px;
+            cursor: help;
+        }
+
+        .division_indicators label:hover{
+            cursor: help;
+        }
+
         @media (max-width: 480px) { 
             #calculation_example{
                 border-right: 0 !important;
                 border-left: 0 !important;
                 border-top: 1px solid gray !important;
                 border-bottom: 1px solid gray !important; 
+            }
+
+            #botao-receita{
+                margin-left: 0 !important;
             }
 
             .arrow{
@@ -74,27 +96,39 @@
         }
         h2 { font-size: 20px; letter-spacing: -1px; color: #000C; text-shadow: 1px 1px 0 #000, margin: 10px 0 24px; text-align: justify; line-height: 30px}
         .reserve_info{padding: 0.7vw;border: 10px solid #000B;margin-bottom: 2vh}
-        h1{color:#000C;font-family: 'Poppins', sans-serif; font-size: 65px; font-weight: normal; line-height: 60px; margin: 10px 0 20px; text-shadow: 2px 2px 0 #000, margin: 10px 0 24px; text-align: center;}
+        h1{color:#000C;font-family: 'Poppins', sans-serif; font-size: 50px; font-weight: normal; line-height: 40px; margin: 10px 0 20px; text-shadow: 2px 2px 0 #000, margin: 10px 0 24px; text-align: center;}
         p {margin: 0 0 24px; text-align: center; }
         label{margin: 0 0 24px;width: 100%;}
-        .row{margin-top: 4vh;}#infos-funcionarios{display: none;margin-left: 4vw;}.content{width: 80vw;margin: 0 auto;}.dot {height: 25px;width: 25px;border-radius: 50%;display: inline-block;margin-left: 90%;}.tab-content{height: 100%;}blockquote{border-left: 3px solid rgba(42, 42, 42, 0.15);padding-top: 0;padding-bottom:0;padding: 10px 20px;margin: 0 0 20px;font-size: 17.5px;font-size: 19px;line-height: 26px;color: #808080;}.info_text{height: 100%}.info_text>p{text-indent: 4em;}
+        .row{margin-top: 4vh;}#infos-funcionarios{display: none;margin-left: 4vw;}.content{width: 80vw;margin: 0 auto;}.dot {height: 25px;width: 25px;border-radius: 50%;display: inline-block;margin-left: 50%;}.tab-content{height: 100%;}blockquote{border-left: 3px solid rgba(42, 42, 42, 0.15);padding-top: 0;padding-bottom:0;padding: 10px 20px;margin: 0 0 20px;font-size: 17.5px;font-size: 19px;line-height: 26px;color: #808080;}.info_text{height: 100%}.info_text>p{text-indent: 4em;}
         /* Chart.js */
         @keyframes chartjs-render-animation{from{opacity:.99}to{opacity:1}}.chartjs-render-monitor{animation:chartjs-render-animation 1ms}.chartjs-size-monitor,.chartjs-size-monitor-expand,.chartjs-size-monitor-shrink{position:absolute;direction:ltr;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1}.chartjs-size-monitor-expand>div{position:absolute;width:1000000px;height:1000000px;left:0;top:0}.chartjs-size-monitor-shrink>div{position:absolute;width:200%;height:200%;left:0;top:0}
     </style>
 </head>
     <main>
-        <div class="container-fluid" style="padding: 0 8vw 8vw 8vw;">
+        <div class="container-fluid" style="padding: 0 8vw 0 8vw;">
             <div id="page_header" class="row">
                 <div class="col col-md-12">
-                    <h1>Divisão de salário</h1>
-                    <hr />
-                    <div class="row  input-group mb-2">
-                        <label for="receita-bruta">Quanto você recebe por mês (Valor líquido    )</label>
-                        <div class="input-group-prepend">
-                            <span class="input-group-text">R$</span>
+                    <div class="row">
+                        <div class="col col-md-12">
+                            <h1>Divisão de salário</h1>
                         </div>
-                        <input id="receita-bruta" class="form-control money" type="text" required="required" pattern="[0-9]{0,10}[,]{1,1}[0-9]{0,4}" placeholder="Salário líquido em R$. Ex.: 2000,00" />
-                        <button id="botao-receita" disabled type="button" class="btn btn-success" onclick="updateCharts()" style="margin-left: 10vw;">Processar salário</button>
+                    </div>
+                    <hr />
+                    <div class="row">
+                        <div class="col col-md-12">
+                            <label for="receita-bruta">Quanto você recebe por mês (Valor líquido)</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col col-md-10 input-group mb-2">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">R$</span>
+                            </div>
+                            <input id="receita-bruta" class="form-control money" type="text" required="required" pattern="[0-9]{0,10}[,]{1,1}[0-9]{0,4}" placeholder="Salário líquido em R$. Ex.: 2000,00" />        
+                        </div>
+                        <div class="col col-md-2">
+                            <button id="botao-receita" disabled type="button" class="btn btn-success" onclick="updateCharts()" style="margin-left: 10vw;">Dividir</button>
+                        </div>
                     </div>
                     <br />
                     <hr />
@@ -114,16 +148,16 @@
                             <div class="col col-md-6"  style="margin-top: 5vh;">
                                 <canvas id="tortaReserva" style="display: block; width: 540px; height: 270px;" width="540" height="270" class="chartjs-render-monitor"></canvas>
                             </div>
-                            <div class="col col-md-6">
-                                <div class="row">
+                            <div id="chart_labels" class="col col-md-6">
+                                <div class="row division_indicators" data-toggle="popover" title="Gastos essenciais" data-placement="top" data-content="Os gastos essenciais são aqueles básicos para nossa 'sobrevivência'. Ex.: Aluguel, água, luz, gás, internet, etc.">
                                     <div class="col col-md-2">
                                         <div id="cortrees" class="dot"></div>
                                     </div>
                                     <div class="col col-md-10">
-                                        <label>50% &#10144; Essencial: R$<span id="trEssencial"></span></label>
+                                        <label>50% &#10144; Essencial: R$ <span id="trEssencial"></span></label>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div class="row division_indicators" data-toggle="popover" title="Reserva de emergência" data-placement="top" data-content="A reserva de emergência tem relação direta com os gastos essenciais. Geralmente, quando completa, representa de 3 a 6 vezes o valor dos gastos essenciais. ">
                                     <div class="col col-md-2">
                                         <div id="cortrer" class="dot"></div>
                                     </div>
@@ -131,7 +165,7 @@
                                         <label>40% &#10144; Reserva de emergência: R$<span id="trReserva"></span></label>
                                     </div>
                                 </div>
-                                <div  class="row">
+                            <div  class="row division_indicators" data-toggle="popover" title="Capacitação" data-placement="top" data-content="Essa é a quantidade de dinheiro que você investe em você! Server para pagar os seus estudos, cursos, congressos, etc.">
                                     <div class="col col-md-2">
                                         <div id="cortreed" class="dot"></div>
                                     </div>
@@ -139,7 +173,7 @@
                                         <label>5%  &#10144; Capacitação: R$<span id="trEducacao"></span></label>
                                     </div>
                                 </div>
-                                <div  class="row">
+                                <div  class="row division_indicators" data-toggle="popover" title="Diversão" data-placement="top" data-content="Ninguém é de ferro! Por isso você precisa separar uma quantia do seu dinheiro para se divertir e fazer o que quiser.">
                                     <div class="col col-md-2">
                                         <div id="cortredi" class="dot"></div>
                                     </div>
@@ -189,21 +223,80 @@
                                 </div>
                                 <div class="row reserve_info">
                                     <div class="col-md-4 col-sm-12" style="padding: 1vw 2vw 2vw 2vw;">
-                                        <p style="text-align: justify;display: block;margin-top: 12vh;">Digamos que estes, ao lado, são seus gastos mensais recorrentes, ou seja, esses são os valores que você gasta fixamente, todos os meses e que você não pode "sobreviver" sem. Por isso neste caso não colocamos, por exemplo os gastos com carro (especificamente), mas se no seu caso é algo totalmente necessário para o seu dia-a-dia entra nessa conta também.</p>
+                                        <p style="text-align: justify;display: block;margin-top: 12vh;">Digamos que estes, ao lado, são seus gastos mensais recorrentes, ou seja, esses são os valores que você gasta fixamente, todos os meses e que você não pode "sobreviver" sem.</p> 
+                                        <p style="text-align: justify;display: block;">Por isso neste caso não colocamos, por exemplo os gastos com carro (especificamente), mas se no seu caso é algo totalmente necessário para o seu dia-a-dia entra nessa conta também.</p>
                                     </div>
-                                    <div id="calculation_example" class="col-md-4 col-sm-12" style="padding-top: 4vh;border-right: 1px solid gray;border-left: 1px solid gray;">
-                                        <p>Aluguel: R$800,00</p>
-                                        <p>Água: R$60,00</p>
-                                        <p>Luz: R$85,00</p>
-                                        <p>Condomínio: R$250,00</p>
-                                        <p>Transporte: R$200,00</p>
-                                        <p>Alimentação: R$600,00</p>
-                                        <p>Diversão: R$200,00</p>
-                                        <hr />
-                                        <p>Total: R$2.195,00</p>
+                                    <div id="calculation_example" class="col-md-4 col-sm-12" style="border-right: 1px solid gray;border-left: 1px solid gray;">
+                                        <div class="row">
+                                            <div class="col col-md-2">
+
+                                            </div>
+                                            <div class="col col-md-10"> 
+                                                R$800,00 (Aluguel)
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col col-md-2" style="text-align: right;">
+                                                +
+                                            </div>
+                                            <div class="col col-md-10">
+                                                R$60,00 (Água)
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col col-md-2" style="text-align:right">
+                                                +
+                                            </div>
+                                            <div class="col col-md-10">
+                                                R$85,00 (Luz)
+                                            </div>                                            
+                                        </div>
+                                        <div class="row">
+                                            <div class="col col-md-2" style="text-align: right;">
+                                                +
+                                            </div>
+                                            <div class="col col-md-10">
+                                                R$250,00 (Condomínio)
+                                            </div>                                            
+                                        </div>
+                                        <div class="row">
+                                            <div class="col col-md-2" style="text-align: right;">
+                                                +
+                                            </div>
+                                            <div class="col col-md-10">
+                                                R$200,00 (Transporte)
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col col-md-2" style="text-align: right;">
+                                                +
+                                            </div>
+                                            <div class="col col-md-10">
+                                                R$600,00 (Alimentação)
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col col-md-2" style="text-align: right;">
+                                                +
+                                            </div>
+                                            <div class="col col-md-10">
+                                                R$200,00 (Diversão)
+                                            </div>
+                                        </div>
+                                        <hr style="border: 2px solid rgba(0,0,0,.1)" />
+                                        <div class="row">
+                                            <div class="col col-md-2" style="text-align: right;">
+                                                =
+                                            </div>
+                                            <div class="col col-md-10" style="font-weight: bold;">
+                                                R$2.195,00
+                                            </div> 
+                                        </div>
                                     </div>
                                     <div class="col-md-4 col-sm-12" style="padding: 1vw 2vw 2vw 2vw;">
-                                        <p style="text-align: justify;display: block;margin-top: 12vh;">Com estes valores de exemplo, podemos calcular quanto seria a sua reserva de emergência. Para o custo de R$2.195,00 por mês o ideal seria ter uma reserva de emergência de R$6.585,00 (Seis mil quinhentos e oitenta e cinco reais) para se manter por 6 meses. Para se manter por 1 ano, esse valor duplica: R$13.170,00 (Treze mil cento e setenta reais).</p>
+                                        <p style="text-align: justify;display: block;margin-top: 12vh;">Com estes valores de exemplo, podemos calcular quanto seria a sua reserva de emergência.</p> 
+                                            <li>Para o custo de R$2.195,00 por mês o ideal seria ter uma reserva de emergência de R$6.585,00 (Seis mil quinhentos e oitenta e cinco reais)</li> 
+                                            <li>Para se manter por 6 meses. Para se manter por 1 ano, esse valor duplica: R$13.170,00 (Treze mil cento e setenta reais).</li>
                                     </div>
                                 </div>
                             </div> 
@@ -215,7 +308,7 @@
                                 <canvas id="tortaAposentada" style="display: block; width: 540px; height: 270px;" width="540" height="270" class="chartjs-render-monitor"></canvas>
                             </div>
                             <div class="col col-md-6">
-                                <div class="row">
+                                <div class="row division_indicators">
                                     <div class="col col-md-2">
                                         <div id="cortaes" class="dot"></div>
                                     </div>
@@ -223,7 +316,7 @@
                                         <label>50% &#10144; Essencial: R$<span id="taEssencial"></span></label>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div class="row division_indicators">
                                     <div class="col col-md-2">
                                         <div id="cortar" class="dot"></div>
                                     </div>
@@ -231,7 +324,7 @@
                                         <label>30% &#10144; Reserva aposentadoria: R$<span id="taReserva"></span></label>
                                     </div>
                                 </div>
-                                <div  class="row">
+                                <div  class="row division_indicators">
                                     <div class="col col-md-2">
                                         <div id="cortao" class="dot"></div>
                                     </div>
@@ -239,7 +332,7 @@
                                         <label>10% &#10144; Objetivos e metas: R$<span id="taObjetivos"></span></label>
                                     </div>
                                 </div>
-                                <div  class="row">
+                                <div  class="row division_indicators">
                                     <div class="col col-md-2">
                                         <div id="cortad" class="dot"></div>
                                     </div>
@@ -256,7 +349,7 @@
                                 <canvas id="tortaRica" style="display: block; width: 540px; height: 270px;" width="540" height="270" class="chartjs-render-monitor"></canvas>
                             </div>
                             <div class="col col-md-6">
-                                <div class="row">
+                                <div class="row division_indicators">
                                     <div class="col col-md-2">
                                         <div id="cortres" class="dot"></div>
                                     </div>
@@ -264,7 +357,7 @@
                                         <label>50% &#10144; Essencial: R$<span id="trEssencial"></span></label>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div class="row division_indicators">
                                     <div class="col col-md-2">
                                         <div id="cortri" class="dot"></div>
                                     </div>
@@ -272,7 +365,7 @@
                                         <label>35% &#10144; Investimentos (patrimônio): R$<span id="trInvestimento"></span></label>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div class="row division_indicators">
                                     <div class="col col-md-2">
                                         <div id="cortred" class="dot"></div>
                                     </div>
@@ -280,7 +373,7 @@
                                         <label>10%  &#10144; Capacitação: R$<span id="trEducacao"></span></label>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div class="row division_indicators">
                                     <div class="col col-md-2">
                                         <div id="cortrd" class="dot"></div>
                                     </div>
@@ -297,7 +390,7 @@
                                 <canvas id="tortaEmpresaria" style="display: block; width: 540px; height: 270px;" width="540" height="270" class="chartjs-render-monitor"></canvas>
                             </div>
                             <div class="col col-md-6">
-                                <div class="row">
+                                <div class="row division_indicators">
                                     <div class="col col-md-2">
                                         <div id="cortees" class="dot"></div>
                                     </div>
@@ -305,7 +398,7 @@
                                         <label>50% &#10144; Essencial: R$<span id="teEssencial"></span></label>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div class="row division_indicators">
                                     <div class="col col-md-2">
                                         <div id="corterp" class="dot"></div>
                                     </div>
@@ -313,7 +406,7 @@
                                         <label>5% &#10144; Investimentos pessoais: R$<span id="teInvestimentosP"></span></label>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div class="row division_indicators">
                                     <div class="col col-md-2">
                                         <div id="cortep" class="dot"></div>                                        
                                     </div>
@@ -321,7 +414,7 @@
                                         <label>25% &#10144; Investimento inicial do negócio: R$<span id="teInvestimentoN"></span></label>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div class="row division_indicators">
                                     <div class="col col-md-2">
                                         <div id="corteed" class="dot"></div>
                                     </div>
@@ -329,7 +422,7 @@
                                         <label>15%  &#10144; Capacitação: R$<span id="teEducacao"></span></label>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div class="row division_indicators">
                                     <div class="col col-md-2">
                                         <div id="corted" class="dot"></div>
                                     </div>
@@ -344,6 +437,7 @@
             </div>
         </div>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script src="popper.min.js"></script>
         <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
         <script async="" src="//www.google-analytics.com/analytics.js"></script>
         <script src="utils.js"></script>
