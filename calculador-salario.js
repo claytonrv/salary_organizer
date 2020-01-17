@@ -87,12 +87,11 @@ function configureTortaAposentada(salario){
                         console.log(slice)
                         var indicatorId = slice[0]['_index'] + 1
                         if(slice.length){
-                            $('#chart_labels').children('div').removeClass('indicators')
-                            $('#chart_labels .row:nth-child('+indicatorId+')').addClass('indicators');
+                            $('#chart_labels_aposentadoria').children('div').removeClass('indicators')
+                            $('#chart_labels_aposentadoria .row:nth-child('+indicatorId+')').addClass('indicators');
                         }
                     } catch (error) {
-                        //console.log(error)
-                        $('#chart_labels').children('div').removeClass('indicators');
+                        $('#chart_labels_aposentadoria').children('div').removeClass('indicators');
                         console.log("No chart identified.")
                     }
                 }
@@ -328,17 +327,19 @@ $(function () {
 
 $(document).ready(function () {
     $('.nav-toggle').click(function () {
+        console.log($(this)["0"].children["0"].children["0"].id)
+        var arrowId = $(this)["0"].children["0"].children["0"].id
         var collapse_content_selector = $(this).attr('href');
         var toggle_switch = $(this);
         $(collapse_content_selector).toggle(function () {
             if ($(this).css('display') == 'none') {
                 //toggle_switch.html('Read More');
-                $('.arrow').css('transform', 'rotate(0deg)');
+                $('#'+arrowId).css('transform', 'rotate(0deg)');
                 scrollToCharts()
             } else {
                 //toggle_switch.css('display', 'none');
-                $('.arrow').css('transform', 'rotate(180deg)');
-                scrollTo('#collapse')
+                $('#'+arrowId).css('transform', 'rotate(180deg)');
+                scrollTo('#'+$(this)[0]['id'])
             }
         });
     });

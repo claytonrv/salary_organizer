@@ -97,7 +97,7 @@
         h2 { font-size: 20px; letter-spacing: -1px; color: #000C; text-shadow: 1px 1px 0 #000, margin: 10px 0 24px; text-align: justify; line-height: 30px}
         .reserve_info{padding: 0.7vw;border: 10px solid #000B;margin-bottom: 2vh}
         h1{color:#000C;font-family: 'Poppins', sans-serif; font-size: 50px; font-weight: normal; line-height: 40px; margin: 10px 0 20px; text-shadow: 2px 2px 0 #000, margin: 10px 0 24px; text-align: center;}
-        p {margin: 0 0 24px; text-align: center; }
+        p {margin: 0 0 24px; text-align: justify; text-indent: 40px;}
         label{margin: 0 0 24px;width: 100%;}
         .row{margin-top: 4vh;}#infos-funcionarios{display: none;margin-left: 4vw;}.content{width: 80vw;margin: 0 auto;}.dot {height: 25px;width: 25px;border-radius: 50%;display: inline-block;margin-left: 50%;}.tab-content{height: 100%;}blockquote{border-left: 3px solid rgba(42, 42, 42, 0.15);padding-top: 0;padding-bottom:0;padding: 10px 20px;margin: 0 0 20px;font-size: 17.5px;font-size: 19px;line-height: 26px;color: #808080;}.info_text{height: 100%}.info_text>p{text-indent: 4em;}
         /* Chart.js */
@@ -187,9 +187,9 @@
                             <div class="col col-md-12">
                                 <hr />
                                 <h1  style="text-align: center;">Reseverva de emergência</h1>
-                                <a href="#collapse" class="nav-toggle">
+                                <a id="res" href="#collapse" class="nav-toggle">
                                     <div style="width:100%;height:8vh">                                
-                                        <div class="arrow">
+                                        <div  id="arrowR" class="arrow">
                                             <span></span>
                                             <span></span>
                                         </div>
@@ -201,7 +201,7 @@
                             <div class="col col-md-12">                              
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <img src="https://images.pexels.com/photos/12619/house-money-capitalism-fortune-12619.jpg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" style="width: 100%">
+                                        <img src="https://images.pexels.com/photos/12619/house-money-capitalism-fortune-12619.jpg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" style="width: 100%;margin-top: 10vh;">
                                     </div>
                                     <div class="col-md-6" style="border-left: 1px solid rgba(42, 42, 42, 0.15);}">
                                         <p> Antes de pensarmos em investimentos, aposentadoria ou abrir uma empresa, precisamos garantir que se tudo der errado, você ainda conseguirá manter o seu padrão de vida por algum tempo. Em geral, usamos, em geral, o tempo de 3 à 6 meses como boas quantidades de reserva de emergência. </p>
@@ -307,41 +307,141 @@
                             <div class="col col-md-6"  style="margin-top: 5vh;">
                                 <canvas id="tortaAposentada" style="display: block; width: 540px; height: 270px;" width="540" height="270" class="chartjs-render-monitor"></canvas>
                             </div>
-                            <div class="col col-md-6">
-                                <div class="row division_indicators">
+                            <div id="chart_labels_aposentadoria" class="col col-md-6">
+                                <div class="row division_indicators" data-toggle="popover" title="Gastos essenciais" data-placement="top" data-content="Os gastos essenciais são aqueles básicos para nossa 'sobrevivência'. Ex.: Aluguel, água, luz, gás, internet, etc.">
                                     <div class="col col-md-2">
                                         <div id="cortaes" class="dot"></div>
                                     </div>
                                     <div class="col col-md-10">
-                                        <label>50% &#10144; Essencial: R$<span id="taEssencial"></span></label>
+                                        <label>50% &#10144; Essencial: R$ <span id="taEssencial"></span></label>
                                     </div>
                                 </div>
-                                <div class="row division_indicators">
+                                <div class="row division_indicators" data-toggle="popover" title="Reserva de emergência" data-placement="top" data-content="A reserva de emergência tem relação direta com os gastos essenciais. Geralmente, quando completa, representa de 3 a 6 vezes o valor dos gastos essenciais. ">
                                     <div class="col col-md-2">
                                         <div id="cortar" class="dot"></div>
                                     </div>
                                     <div class="col col-md-10">
-                                        <label>30% &#10144; Reserva aposentadoria: R$<span id="taReserva"></span></label>
+                                        <label>30% &#10144; Reserva de aposentadoria: R$<span id="taReserva"></span></label>
                                     </div>
                                 </div>
-                                <div  class="row division_indicators">
+                                <div  class="row division_indicators" data-toggle="popover" title="Objetivos e metas" data-placement="top" data-content="Essa é a quantidade de dinheiro que você reserva para realizar seus projetos de curto e médio prazo! Esse é o dinheiro que você reserva para comprar as coisas que irão te fazer feliz na caminhada até a aposenadoria (Um carro, um aparamentou, uma casa, etc.).">
                                     <div class="col col-md-2">
                                         <div id="cortao" class="dot"></div>
                                     </div>
                                     <div class="col col-md-10">
-                                        <label>10% &#10144; Objetivos e metas: R$<span id="taObjetivos"></span></label>
+                                        <label>10%  &#10144; Objetivos e metas: R$<span id="taObjetivos"></span></label>
                                     </div>
                                 </div>
-                                <div  class="row division_indicators">
+                                <div  class="row division_indicators" data-toggle="popover" title="Diversão" data-placement="top" data-content="Ninguém é de ferro! Por isso você precisa separar uma quantia do seu dinheiro para se divertir e fazer o que quiser.">
                                     <div class="col col-md-2">
                                         <div id="cortad" class="dot"></div>
                                     </div>
                                     <div class="col col-md-10">
-                                        <label>10%  &#10144; Diversão: R$<span id="taDiversao"></span></label>
+                                        <label>5%  &#10144; Diversão: R$<span id="taDiversao"></span></label>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        <div class="row">
+                            <div class="col col-md-12">
+                                <hr />
+                                <h1  style="text-align: center;">Reseverva de aposentadoria</h1>
+                                <a id="apos" href="#collapseA" class="nav-toggle">
+                                    <div style="width:100%;height:8vh">                                
+                                        <div id="arrowA" class="arrow">
+                                            <span></span>
+                                            <span></span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div id="collapseA" class="row" style="display: none">  
+                            <div class="col col-md-12">                              
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <img src="https://images.pexels.com/photos/1642883/pexels-photo-1642883.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" style="width: 100%;margin-top: 10vh;">
+                                    </div>
+                                    <div class="col-md-6" style="border-left: 1px solid rgba(42, 42, 42, 0.15);}">
+                                        <p> Quando pensamos em aposentadoria, precisamos antes de mais nada parar de pensar no INSS. Pensar que o governo irá garantir que você tenha uma "melhor idade" boa e com tudo o que você precisa poder ser um grande erro. Para ver como isso é quase impossível, basta pensar em quantas pessoas temos hoje no Brasil aposentados, quantas pessoas irão se aposentar nos próximos ano e qual é o número de trabalhadores ativos no mercado (Contribuintes), simplesmente a conta não fecha. </p>
+                                        <h2  style="font-size: 18px"> Mas como assim, a conta não fecha? 
+                                            <blockquote style="margin-top:2vh">O Brasil tem hoje cerca de 30 Milhões de aposentados e pensionistas.<br />
+                                            Em média, essas pessoas recebem cerca de <span style="font-weight: bolder;">R$1479,00</span> por mês! <br />
+                                            Por outro lado, temos aproximadamente 100 milhões de pessoas em idade de trabalho, mas dessas apenas cerca de 36 Milhões trabalha de carteira assinada.</blockquote>
+                                        </h2>  
+                                        <p>É claro que nao são apenas essas 36 Milhões de pessoas que são responsáveis por manter o montante que o INSS usa para pagar as aposentarias e pensões, mas grande parte desse montante vêm desse grupo de trabalhadores.</p>                                        
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col col-md-12">
+                                        <p>Por isso, é extremamente perigoso contar com o dinheiro da aposentadoria do INSS, até porquê como vimos, o valor pago em geral não é muito alto. Por isso, ter uma reserva de aposentadoria, garante que você consiga manter seu padrão de vida atual ou até melhor, durante o período que você não irá mais trabalhar. Guardar e investir dinheiro todos os meses para isso te garante um futuro com menos preocupações e mais tempo para você!</p>
+                                        <p style="margin-top:4vh"> Mas por quanto tempo eu vou precisar guardar 30% do meu salário para me aposentar?
+                                        <blockquote style="margin-top:2vh">Aqui vai uma notícia triste, <br />
+                                            se você ganha R$3000,00 e apenas guardar os R$1200,00, todos os meses, você vai precisar de 41 anos pra se aposentar 😫</blockquote>
+                                        <p>Na aposentadoria, assim como em qualquer outro objetivo financeiro, é importante dizer que você vai precisar se esforçar agora para chegar em um patamar melhor amanhã. Por isso, é importante usar os valores que colocamos aqui como um norte para começar a se orgizar e à partir disso começar a crescer.</p>
+                                        <p>Por isso, para se aposentar, querendo ou não, você vai ter que gardar sempre mais dinheiro, para que esse tempo diminua. Preparamos uma simulação para você entender do que estamos falando:</p>                                
+                                    </div>
+                                </div>
+                                <div class="row reserve_info">
+                                    <div class="col-md-4 col-sm-12" style="padding: 1vw 2vw 2vw 2vw;">
+                                        <p style="text-align: justify;display: block;margin-top: 12vh;">Começando com os seus R$1200,00, se você adicionar mais 1x esse valor a cada seis meses, o tempo para se aposentar vai diminuir muito.</p> 
+                                        <p style="text-align: justify;display: block;">Aqui do lado vamos colocar o tempo para se aposentar com 5 valores diferentes, iniciando com o nosso exemplo de R$1200,00, lembrando que cada vez que vocẽ duplica o valor que guarda para a aposentadoria, você diminui MUITO o tempo que tem que guardar.</p>
+                                    </div>
+                                    <div id="calculation_example" class="col-md-4 col-sm-12" style="border-right: 1px solid gray;border-left: 1px solid gray;">
+                                        <div class="row">
+                                            <div class="col col-md-6" style="text-align: right;">
+                                                R$1200,00/mês
+                                            </div>
+                                            <div class="col col-md-6"> 
+                                                41 Anos
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col col-md-6" style="text-align: right;">
+                                                R$2400,00/mês
+                                            </div>
+                                            <div class="col col-md-6">
+                                                25 Anos
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col col-md-6" style="text-align:right">
+                                                R$3600,00/mês
+                                            </div>
+                                            <div class="col col-md-6">
+                                                18,5 Anos 
+                                            </div>                                            
+                                        </div>
+                                        <div class="row">
+                                            <div class="col col-md-6" style="text-align: right;">
+                                                R$4800,00/mês
+                                            </div>
+                                            <div class="col col-md-6">
+                                                14,5 Anos
+                                            </div>                                            
+                                        </div>
+                                        <div class="row">
+                                            <div class="col col-md-6" style="text-align: right;">
+                                                R$6000,00/mês
+                                            </div>
+                                            <div class="col col-md-6">
+                                                12 Anos
+                                            </div>
+                                        </div>
+                                        <hr style="border: 2px solid rgba(0,0,0,.1)" />
+                                        <div class="row">
+                                            <div class="col col-md-12" style="text-align: right;">
+                                                <p>E assim por diante, quanto mais dinheiro guardado e rendendo juros, menos tempo você vai precisar para se aposentar. Inclusive, se você tem um dinheiro já guardado para iniciar essa conta fica ainda melhor!</p>
+                                            </div> 
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-sm-12" style="padding: 1vw 2vw 2vw 2vw;">
+                                        <p style="text-align: justify;display: block;margin-top: 12vh;">Com estes valores de exemplo, podemos ver que a quantidade de dinheiro que você guarda faz toda a diferença, quando falamos de aposentadoria.</p> 
+                                        <p style="text-align: justify;display: block;margin-top: 12vh;">A ideia aqui não é basicamente guardar dinheiro, é separar um montante todos os meses e investir para poder se aposentar. </p> 
+                                    </div>
+                                </div>
+                            </div> 
+                        </div>                                    
                     </div>
                     <div role="tabpanel" class="tab-pane fade" id="enriquecer">
                         <div class="row">
