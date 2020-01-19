@@ -137,11 +137,11 @@ function configureTortaRica(salario){
                         var slice = this.getElementAtEvent(e);
                         var indicatorId = slice[0]['_index'] + 1
                         if(slice.length){
-                            $('#chart_labels').children('div').removeClass('indicators')
-                            $('#chart_labels .row:nth-child('+indicatorId+')').addClass('indicators');
+                            $('#chart_labels_enriquecer').children('div').removeClass('indicators')
+                            $('#chart_labels_enriquecer .row:nth-child('+indicatorId+')').addClass('indicators');
                         }
                     } catch (error) {
-                        $('#chart_labels').children('div').removeClass('indicators');
+                        $('#chart_labels_enriquecer').children('div').removeClass('indicators');
                         console.log("No chart identified.")
                     }
                 }
@@ -217,10 +217,10 @@ function configureLabelsTortaAposentada(salario){
 }
 
 function configureLabelsTortaRica(salario){
-    $('#trEssencial').text((salario * 0.50).toFixed(2));
-    $('#trInvestimento').text((salario * 0.35).toFixed(2));
-    $('#trEducacao').text((salario * 0.10).toFixed(2));
-    $('#trDiversao').text((salario * 0.05).toFixed(2));
+    $('#triEssencial').text((salario * 0.50).toFixed(2));
+    $('#triInvestimento').text((salario * 0.35).toFixed(2));
+    $('#triEducacao').text((salario * 0.10).toFixed(2));
+    $('#triDiversao').text((salario * 0.05).toFixed(2));
 }
 
 function configureLabelsTortaEmpresaria(salario){
@@ -279,24 +279,26 @@ function scrollTo(elementId){
 }
 
 function displayCharts(){
-    $('#graficos a[href="#reserva"]').tab('show');
-}
-
-function updateCharts(){
-    var salario_string = ($('#receita-bruta').val()).replace(/,/g, ' ');
-    var salario = Number(salario_string.replace(/\s/g, ''));
+    updateChart("tortaReserva");
     $('#graficos').css("display","block");
-    drawChart('tortaReserva', salario);
-    drawChart('tortaRica', salario);
-    drawChart('tortaAposentada', salario);
-    drawChart('tortaEmpresaria', salario);
-    configureLabelsTortaReserva(salario);
-    configureLabelsTortaAposentada(salario);
-    configureLabelsTortaRica(salario);
-    configureLabelsTortaEmpresaria(salario);
-    displayCharts();
+    $('#graficos a[href="#reserva"]').tab('show');
     updateChartsColorLabels();
     scrollTo("#graficos");
+}
+
+function updateChart(chartId){
+    var salario_string = ($('#receita-bruta').val()).replace(/,/g, ' ');
+    var salario = Number(salario_string.replace(/\s/g, ''));
+    drawChart(chartId, salario);
+    if(chartId == 'tortaReserva'){
+        configureLabelsTortaReserva(salario);
+    }else if(chartId == 'tortaRica'){
+        configureLabelsTortaRica(salario);
+    }else if(chartId == 'tortaAposentada'){
+        configureLabelsTortaAposentada(salario);
+    }else if(chartId == 'tortaEmpresaria'){
+        configureLabelsTortaEmpresaria(salario);
+    }
 }
 
 function scrollToCharts(){
@@ -323,7 +325,11 @@ $(function(){
 
 $(function () {
     $('[data-toggle="popover"]').popover()
-})
+});
+
+$('.popover-dismiss').popover({
+    trigger: 'focus'
+});
 
 $(document).ready(function () {
     $('.nav-toggle').click(function () {

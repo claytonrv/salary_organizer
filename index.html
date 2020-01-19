@@ -15,7 +15,7 @@
             padding: 5px !important;
             cursor: help !important;
         }
-
+        
         .division_indicators:hover{
             border: 1px solid black; 
             box-shadow: 2px 4px 12px #888888;
@@ -25,6 +25,10 @@
 
         .division_indicators label:hover{
             cursor: help;
+        }
+
+        .table_align{
+            margin-top: 20vh;
         }
 
         @media (max-width: 480px) { 
@@ -51,6 +55,10 @@
 
             h4{
                 text-align: center !important;
+            }
+
+            .table_align{
+                margin-top: 0px !important;
             }
         }
 
@@ -127,7 +135,7 @@
                             <input id="receita-bruta" class="form-control money" type="text" required="required" pattern="[0-9]{0,10}[,]{1,1}[0-9]{0,4}" placeholder="Salário líquido em R$. Ex.: 2000,00" />        
                         </div>
                         <div class="col col-md-2">
-                            <button id="botao-receita" disabled type="button" class="btn btn-success" onclick="updateCharts()" style="margin-left: 10vw;">Dividir</button>
+                            <button id="botao-receita" disabled type="button" class="btn btn-success" onclick="displayCharts()" style="margin-left: 10vw;">Dividir</button>
                         </div>
                     </div>
                     <br />
@@ -137,19 +145,19 @@
             <div id="graficos" class="row" style="display: none;padding-top: 8vh;">
                 <h4>Escolha o que melhor define seus objetivos</h4>
                 <div class="nav nav-tabs nav-fill" role="tablist">
-                    <a class="nav-item nav-link" href="#reserva" role="tab" data-toggle="tab" aria-controls="nav-home" aria-selected="true" onclick="scrollToCharts()">Criar reserva de emergêcia</a>
-                    <a class="nav-item nav-link" href="#aposentadoria" role="tab" data-toggle="tab" aria-controls="nav-home" aria-selected="true" onclick="scrollToCharts()">Me aposentar</a>
-                    <a class="nav-item nav-link active" href="#enriquecer" role="tab" data-toggle="tab" aria-controls="nav-home" aria-selected="true" onclick="scrollToCharts()">Acumular patrimônio</a>
-                    <a class="nav-item nav-link" href="#empreender" role="tab" data-toggle="tab" aria-controls="nav-home" aria-selected="true" onclick="scrollToCharts()">Abrir uma empresa</a class="nav-link">
+                    <a class="nav-item nav-link" href="#reserva" onclick="updateChart('tortaReserva')"  role="tab" data-toggle="tab" aria-controls="nav-home" aria-selected="true" onclick="scrollToCharts()">Criar reserva de emergêcia</a>
+                    <a class="nav-item nav-link" href="#aposentadoria" onclick="updateChart('tortaAposentada')" role="tab" data-toggle="tab" aria-controls="nav-home" aria-selected="true" onclick="scrollToCharts()">Me aposentar</a>
+                    <a class="nav-item nav-link active" href="#enriquecer" onclick="updateChart('tortaRica')" role="tab" data-toggle="tab" aria-controls="nav-home" aria-selected="true" onclick="scrollToCharts()">Acumular patrimônio</a>
+                    <a class="nav-item nav-link" href="#empreender" onclick="updateChart('tortaEmpresaria')" role="tab" data-toggle="tab" aria-controls="nav-home" aria-selected="true" onclick="scrollToCharts()">Abrir uma empresa</a class="nav-link">
                 </div>
                 <div class="tab-content">
                     <div role="tabpanel" class="tab-pane fade in active" id="reserva">
                         <div class="row">
-                            <div class="col col-md-6"  style="margin-top: 5vh;">
+                            <div class="col-md-6"  style="margin-top: 5vh;">
                                 <canvas id="tortaReserva" style="display: block; width: 540px; height: 270px;" width="540" height="270" class="chartjs-render-monitor"></canvas>
                             </div>
-                            <div id="chart_labels" class="col col-md-6">
-                                <div class="row division_indicators" data-toggle="popover" title="Gastos essenciais" data-placement="top" data-content="Os gastos essenciais são aqueles básicos para nossa 'sobrevivência'. Ex.: Aluguel, água, luz, gás, internet, etc.">
+                            <div id="chart_labels" class="col-md-6">
+                                <div class="row division_indicators" data-toggle="popover" tabindex="0" data-trigger="focus" title="Gastos essenciais" data-placement="top" data-content="Os gastos essenciais são aqueles básicos para nossa 'sobrevivência'. Ex.: Aluguel, água, luz, gás, internet, etc.">
                                     <div class="col col-md-2">
                                         <div id="cortrees" class="dot"></div>
                                     </div>
@@ -157,7 +165,7 @@
                                         <label>50% &#10144; Essencial: R$ <span id="trEssencial"></span></label>
                                     </div>
                                 </div>
-                                <div class="row division_indicators" data-toggle="popover" title="Reserva de emergência" data-placement="top" data-content="A reserva de emergência tem relação direta com os gastos essenciais. Geralmente, quando completa, representa de 3 a 6 vezes o valor dos gastos essenciais. ">
+                                <div class="row division_indicators" data-toggle="popover" tabindex="0" data-trigger="focus" title="Reserva de emergência" data-placement="top" data-content="A reserva de emergência tem relação direta com os gastos essenciais. Geralmente, quando completa, representa de 3 a 6 vezes o valor dos gastos essenciais. ">
                                     <div class="col col-md-2">
                                         <div id="cortrer" class="dot"></div>
                                     </div>
@@ -165,7 +173,7 @@
                                         <label>40% &#10144; Reserva de emergência: R$<span id="trReserva"></span></label>
                                     </div>
                                 </div>
-                            <div  class="row division_indicators" data-toggle="popover" title="Capacitação" data-placement="top" data-content="Essa é a quantidade de dinheiro que você investe em você! Server para pagar os seus estudos, cursos, congressos, etc.">
+                            <div  class="row division_indicators" data-toggle="popover" tabindex="0" data-trigger="focus" title="Capacitação" data-placement="top" data-content="Essa é a quantidade de dinheiro que você investe em você! Server para pagar os seus estudos, cursos, congressos, etc.">
                                     <div class="col col-md-2">
                                         <div id="cortreed" class="dot"></div>
                                     </div>
@@ -173,7 +181,7 @@
                                         <label>5%  &#10144; Capacitação: R$<span id="trEducacao"></span></label>
                                     </div>
                                 </div>
-                                <div  class="row division_indicators" data-toggle="popover" title="Diversão" data-placement="top" data-content="Ninguém é de ferro! Por isso você precisa separar uma quantia do seu dinheiro para se divertir e fazer o que quiser.">
+                                <div  class="row division_indicators" data-toggle="popover" tabindex="0" data-trigger="focus" title="Diversão" data-placement="top" data-content="Ninguém é de ferro! Por isso você precisa separar uma quantia do seu dinheiro para se divertir e fazer o que quiser.">
                                     <div class="col col-md-2">
                                         <div id="cortredi" class="dot"></div>
                                     </div>
@@ -304,11 +312,11 @@
                     </div>
                     <div role="tabpanel" class="tab-pane fade in" id="aposentadoria">
                         <div class="row">
-                            <div class="col col-md-6"  style="margin-top: 5vh;">
+                            <div class="col-md-6"  style="margin-top: 5vh;">
                                 <canvas id="tortaAposentada" style="display: block; width: 540px; height: 270px;" width="540" height="270" class="chartjs-render-monitor"></canvas>
                             </div>
-                            <div id="chart_labels_aposentadoria" class="col col-md-6">
-                                <div class="row division_indicators" data-toggle="popover" title="Gastos essenciais" data-placement="top" data-content="Os gastos essenciais são aqueles básicos para nossa 'sobrevivência'. Ex.: Aluguel, água, luz, gás, internet, etc.">
+                            <div id="chart_labels_aposentadoria" class="col-md-6">
+                                <div class="row division_indicators" data-toggle="popover" tabindex="0" data-trigger="focus" title="Gastos essenciais" data-placement="top" data-content="Os gastos essenciais são aqueles básicos para nossa 'sobrevivência'. Ex.: Aluguel, água, luz, gás, internet, etc.">
                                     <div class="col col-md-2">
                                         <div id="cortaes" class="dot"></div>
                                     </div>
@@ -316,7 +324,7 @@
                                         <label>50% &#10144; Essencial: R$ <span id="taEssencial"></span></label>
                                     </div>
                                 </div>
-                                <div class="row division_indicators" data-toggle="popover" title="Reserva de emergência" data-placement="top" data-content="A reserva de emergência tem relação direta com os gastos essenciais. Geralmente, quando completa, representa de 3 a 6 vezes o valor dos gastos essenciais. ">
+                                <div class="row division_indicators" data-toggle="popover" tabindex="0" data-trigger="focus" title="Reserva de emergência" data-placement="top" data-content="A reserva de emergência tem relação direta com os gastos essenciais. Geralmente, quando completa, representa de 3 a 6 vezes o valor dos gastos essenciais. ">
                                     <div class="col col-md-2">
                                         <div id="cortar" class="dot"></div>
                                     </div>
@@ -324,7 +332,7 @@
                                         <label>30% &#10144; Reserva de aposentadoria: R$<span id="taReserva"></span></label>
                                     </div>
                                 </div>
-                                <div  class="row division_indicators" data-toggle="popover" title="Objetivos e metas" data-placement="top" data-content="Essa é a quantidade de dinheiro que você reserva para realizar seus projetos de curto e médio prazo! Esse é o dinheiro que você reserva para comprar as coisas que irão te fazer feliz na caminhada até a aposenadoria (Um carro, um aparamentou, uma casa, etc.).">
+                                <div  class="row division_indicators" data-toggle="popover" tabindex="0" data-trigger="focus" title="Objetivos e metas" data-placement="top" data-content="Essa é a quantidade de dinheiro que você reserva para realizar seus projetos de curto e médio prazo! Esse é o dinheiro que você reserva para comprar as coisas que irão te fazer feliz na caminhada até a aposenadoria (Um carro, um aparamentou, uma casa, etc.).">
                                     <div class="col col-md-2">
                                         <div id="cortao" class="dot"></div>
                                     </div>
@@ -332,7 +340,7 @@
                                         <label>10%  &#10144; Objetivos e metas: R$<span id="taObjetivos"></span></label>
                                     </div>
                                 </div>
-                                <div  class="row division_indicators" data-toggle="popover" title="Diversão" data-placement="top" data-content="Ninguém é de ferro! Por isso você precisa separar uma quantia do seu dinheiro para se divertir e fazer o que quiser.">
+                                <div  class="row division_indicators" data-toggle="popover" tabindex="0" data-trigger="focus" title="Diversão" data-placement="top" data-content="Ninguém é de ferro! Por isso você precisa separar uma quantia do seu dinheiro para se divertir e fazer o que quiser.">
                                     <div class="col col-md-2">
                                         <div id="cortad" class="dot"></div>
                                     </div>
@@ -443,53 +451,165 @@
                             </div> 
                         </div>                                    
                     </div>
-                    <div role="tabpanel" class="tab-pane fade" id="enriquecer">
+                    <div role="tabpanel" class="tab-pane fade in active" id="enriquecer">
                         <div class="row">
-                            <div class="col col-md-6"  style="margin-top: 5vh;">
+                            <div class="col-md-6"  style="margin-top: 5vh;">
                                 <canvas id="tortaRica" style="display: block; width: 540px; height: 270px;" width="540" height="270" class="chartjs-render-monitor"></canvas>
                             </div>
-                            <div class="col col-md-6">
-                                <div class="row division_indicators">
+                            <div id="chart_labels_enriquecer" class="col-md-6">
+                                <div class="row division_indicators" tabindex="0" data-toggle="popover" data-trigger="focus" title="Gastos essenciais" data-placement="top" data-content="Os gastos essenciais são aqueles básicos para nossa 'sobrevivência'. Ex.: Aluguel, água, luz, gás, internet, etc.">
                                     <div class="col col-md-2">
                                         <div id="cortres" class="dot"></div>
                                     </div>
                                     <div class="col col-md-10">
-                                        <label>50% &#10144; Essencial: R$<span id="trEssencial"></span></label>
+                                        <label>50% &#10144; Essencial: R$ <span id="triEssencial"></span></label>
                                     </div>
                                 </div>
-                                <div class="row division_indicators">
+                                <div class="row division_indicators" tabindex="0" data-toggle="popover" data-trigger="focus" title="Investimentos (patrimônio):" data-placement="top" data-content="Essa é a quantidade de dinheiro que você vai colocar para trabalhar para você! O que isso significa? Estudar sobre investimentos e aplicar esse dinheiro, para que ele te renda juros e aumente seu patrimônio enquanto você dorme.">
                                     <div class="col col-md-2">
                                         <div id="cortri" class="dot"></div>
                                     </div>
                                     <div class="col col-md-10">
-                                        <label>35% &#10144; Investimentos (patrimônio): R$<span id="trInvestimento"></span></label>
+                                        <label>35% &#10144; Investimentos (patrimônio: R$<span id="triReserva"></span></label>
                                     </div>
                                 </div>
-                                <div class="row division_indicators">
+                                <div  class="row division_indicators" tabindex="0" data-toggle="popover" data-trigger="focus" title="Capacitação" data-placement="top" data-content="Essa é a quantidade de dinheiro que você investe em você! Server para pagar os seus estudos, cursos, congressos, etc.">
                                     <div class="col col-md-2">
                                         <div id="cortred" class="dot"></div>
                                     </div>
                                     <div class="col col-md-10">
-                                        <label>10%  &#10144; Capacitação: R$<span id="trEducacao"></span></label>
+                                        <label>10%  &#10144; Capacitação: R$<span id="triEducacao"></span></label>
                                     </div>
                                 </div>
-                                <div class="row division_indicators">
+                                <div  class="row division_indicators" tabindex="0" data-toggle="popover" data-trigger="focus" title="Diversão" data-placement="top" data-content="Ninguém é de ferro! Por isso você precisa separar uma quantia do seu dinheiro para se divertir e fazer o que quiser.">
                                     <div class="col col-md-2">
                                         <div id="cortrd" class="dot"></div>
                                     </div>
                                     <div class="col col-md-10">
-                                        <label>5%  &#10144; Diversão: R$<span id="trDiversao"></span></label>
+                                        <label>5%  &#10144; Diversão: R$<span id="triDiversao"></span></label>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        <div class="row">
+                            <div class="col col-md-12">
+                                <hr />
+                                <h1  style="text-align: center;">Reseverva de emergência</h1>
+                                <a id="inves" href="#collapseI" class="nav-toggle">
+                                    <div style="width:100%;height:8vh">                                
+                                        <div  id="arrowI" class="arrow">
+                                            <span></span>
+                                            <span></span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div id="collapseI" class="row" style="display: none">  
+                            <div class="col col-md-12">                              
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <img src="https://images.pexels.com/photos/36104/pexels-photo.jpg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260" style="width: 100%;margin-top: 10vh;">
+                                    </div>
+                                    <div class="col-md-6" style="border-left: 1px solid rgba(42, 42, 42, 0.15);}">
+                                        <p> Quando falamos em investimentos, não estamos falando em pegar todo seu dinheiro, aplicar em bolsa de valores, fazer loucuras, ganhar milhares ou milhões de reais do dia para a noite ou mesmo deixar na poupança "rendendo." </p>
+                                        <h2  style="font-size: 18px"> Mas então, se não é disso que estamos falando, o que significam esses tais de investimentos? 
+                                            <blockquote style="margin-top:2vh">Queremos apenas garantir que em algum momento de vida você tenha liberdade financeira para decidir sua própria vida!</blockquote>
+                                        </h2>  
+                                        <p> Onde você mora, onde você trabalha, seu padrão de vida atual, as coisas que você pode ou não fazer, tudo isso está totalmente relacionado com quanto você ganha hoje.</p>
+                                        <p>Investir seu dinheiro e montar um patrimônio te garante poder escolher esse tipo de coisa, se você quer ou não continuar trabalhando, se você muda ou não de trabalho, mudar ou não de casa, etc. Tudo isso amparado por ter a certeza de que seu dinheiro está trabalhando para você.</p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col col-md-12">
+                                        <p style="margin-top:4vh"> Os investimentos, em geral, adicionam juros ao seu patrimônio para que ele cresça de tempos em tempo, sem que você precise fazer nada. E a maior vantagem é o que chamamos de juros compostos, que resumindo, significa que se você tiver R$1,00 investido e isso te render R$0,01 hoje, amanhã os juros não serão aplicados sobre os R$1,00 mas sim sobre R$1,01 o que faz com que seu dinheiro sempre cresça e quanto mais dinheiro, maior o crescimento e mais rápido!</p> 
+                                        <p>Vamos aos exemplos:</p>                                 
+                                    </div>
+                                </div>
+                                <div class="row reserve_info">
+                                    <div class="col-md-6 col-sm-12" style="padding: 1vw 2vw 2vw 2vw;">
+                                        <p style="text-align: justify;display: block;margin-top: 12vh;">Digamos que você tem hoje R$1000,00, ao lado vamos mostrar como seu dinheiro poderia estar crescendo ao longo do tempo, para alguns investimentos que não são tão arriscados.</p> 
+                                        <blockquote>Como assim não tão arriscado?</blockquote>
+                                        <p style="text-align: justify;display: block;">Basicamente, tudo na vida tem riscos e com investimentos não seria diferente. Mas neste caso, o que colocamos como risco é de que por motivos economicos do País ou do mundo, o seu dinheiro não se multiplique tão bem. Mas pode ficar tranquilo, você NÃO vai perder seu dinheiro! </p>
+                                        <p>De uma forma ou de outra, o risco muitas vezes vale a pena. Já ouviu o ditado: "Quem não arrisca não petisca"? Pois bem, vamos mostrar que você pode petiscar sem se arriscar muito. No exemplo a seguir vamos aplicar R$1000,00 por 1 mês em diversos tipos de investimentos e ver quanto de retorno podemos ter do investimento menos arriscado para o mais arriscado.</p>
+                                        <blockquote>OBS: Colocamos aqui a poupança junto aos investimentos, apenas para você ver como seu dinheiro vai ser mal utilizado mantendo ele na poupança. Não incentivamos ninguém a colocar dinheiro na poupança, muito pelo contrário!</blockquote>
+                                    </div>
+                                    <div id="calculation_example" class="col-md-6 col-sm-12 table-responsive-sm" style="border-left: 1px solid gray;">
+                                        <table class="table table_align">
+                                            <thead>
+                                              <tr>
+                                                <th scope="col">Investimento</th>
+                                                <th scope="col">Valor</th>
+                                                <th scope="col">Prazo</th>
+                                                <th scope="col">Risco</th>
+                                                <th scope="col">Lucro</th>
+                                                <th scope="col">Rendimento</th>
+                                              </tr>
+                                            </thead>
+                                            <tbody>
+                                              <tr>
+                                                <th scope="row">Poupança</th>
+                                                <td>R$1000,00</td>
+                                                <td>1 ano</td>
+                                                <td>Baixo</td>
+                                                <td>R$1031,50</td>
+                                                <td>0,25%/mês</td>
+                                              </tr>
+                                              <tr>
+                                                <th scope="row">Tesouro direto</th>
+                                                <td>R$1000,00</td>
+                                                <td>1 ano</td>
+                                                <td>Baixo</td>
+                                                <td>R$1033,78</td>
+                                                <td>4,4%/ano</td>
+                                              </tr>
+                                              <tr>
+                                                <th scope="row">CDB</th>
+                                                <td>R$1000,00</td>
+                                                <td>1 ano</td>
+                                                <td>Baixo</td>
+                                                <td>R$1046,37</td>
+                                                <td>127% do CDI</td>
+                                              </tr>
+                                              <tr>
+                                                <th scope="row">LCA</th>
+                                                <td>R$1000,00</td>
+                                                <td>1 ano</td>
+                                                <td>Médio</td>
+                                                <td>R$1043,10</td>
+                                                <td>98% do CDI</td>
+                                              </tr>
+                                              <tr>
+                                                <th scope="row">Ações</th>
+                                                <td>R$1000,00</td>
+                                                <td>1 ano</td>
+                                                <td>Médio/Alto</td>
+                                                <td> - </td>
+                                                <td> - </td>
+                                              </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <p>Como você pode ver, não importa muito qual investimento você escolha, em geral, todos são melhores que a poupança. Quanto falamos em rentabilidade, manter o dinheiro na poupança só garante que você vai impatar seu patrimônio com a inflação que está prevista para 3,60% em 2020!</p>
+                                        <p>Traduzindo, manter o dinheiro na poupança só garante (até o momento) que seus R$1000,00 continuem valendo R$1000,00 no final do ano. Os outros investimentos fazem mais do que isso, garantem que o valor do seu dinheiro e ainda aumenta o montante. </p>
+                                        <blockquote>Mas e o lucro com ações? Por que não tá mostrando nada?</blockquote>
+                                        <p>Quando falamos em lucro sobre ações, temos uma série de fatores que devemos considerar, principalmente em relação modelo de investimento aplicado (Day trade, swing trade, buy and hold, etc). A questão aqui não é mostrar que investindo em ações você irá ganhar mais dinheiro (e provavelmente vá mesmo), mas sim mostrar que é um tipo de investimento arriscado.</p>
+                                        <blockquote>Então não vou investir em ações?</blockquote>
+                                        <p>Também não é por ai. O investimento ser arriscado, não quer dizer que não é/serve para você, apenas quer dizer que para ver lucros reais com ele, você precisa estudar sobre o investimento e estar preparado financeira e emocionalmente. Quando você sabe bem o que está fazendo, conhece os riscos e as oportunidades a chance de sucesso é muito maior. </p>
+                                    </div>
+                                </div>
+                            </div> 
+                        </div>                                    
                     </div>
                     <div role="tabpanel" class="tab-pane fade" id="empreender">
                         <div class="row">
-                            <div class="col col-md-6" style="margin-top: 5vh;">
+                            <div class="col-md-6" style="margin-top: 5vh;">
                                 <canvas id="tortaEmpresaria" style="display: block; width: 540px; height: 270px;" width="540" height="270" class="chartjs-render-monitor"></canvas>
                             </div>
-                            <div class="col col-md-6">
+                            <div class="col-md-6">
                                 <div class="row division_indicators">
                                     <div class="col col-md-2">
                                         <div id="cortees" class="dot"></div>
