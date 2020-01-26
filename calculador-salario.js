@@ -189,11 +189,11 @@ function configureTortaEmpreendedora(salario){
                         var slice = this.getElementAtEvent(e);
                         var indicatorId = slice[0]['_index'] + 1
                         if(slice.length){
-                            $('#chart_labels').children('div').removeClass('indicators')
-                            $('#chart_labels .row:nth-child('+indicatorId+')').addClass('indicators');
+                            $('#chart_labels_empreender').children('div').removeClass('indicators')
+                            $('#chart_labels_empreender .row:nth-child('+indicatorId+')').addClass('indicators');
                         }
                     } catch (error) {
-                        $('#chart_labels').children('div').removeClass('indicators');
+                        $('#chart_labels_empreender').children('div').removeClass('indicators');
                         console.log("No chart identified.")
                     }
                 }
@@ -211,8 +211,8 @@ function configureLabelsTortaReserva(salario){
 
 function configureLabelsTortaAposentada(salario){
     $('#taEssencial').text((salario * 0.5).toFixed(2));
-    $('#taReserva').text((salario * 0.1).toFixed(2));
-    $('#taObjetivos').text((salario * 0.2).toFixed(2));
+    $('#taReserva').text((salario * 0.3).toFixed(2));
+    $('#taObjetivos').text((salario * 0.15).toFixed(2));
     $('#taDiversao').text((salario * 0.05).toFixed(2));
 }
 
