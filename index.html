@@ -1,3 +1,7 @@
+<!--
+    Author: Clayton Veras 2020
+    Distributed under: GNU GENERAL PUBLIC LICENSE
+-->
 <html>
 <head>
     <meta charset='utf-8'>
@@ -6,111 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Poppins|Quicksand&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="sticky-footer.css" />
-    <style>
-        /* página */
-        .indicators{
-            border: 1px solid black !important; 
-            box-shadow: 2px 4px 12px #888888 !important;
-            padding: 5px !important;
-            cursor: help !important;
-        }
-        
-        .division_indicators:hover{
-            border: 1px solid black; 
-            box-shadow: 2px 4px 12px #888888;
-            padding: 5px;
-            cursor: help;
-        }
-
-        .division_indicators label:hover{
-            cursor: help;
-        }
-
-        .table_align{
-            margin-top: 20vh;
-        }
-
-        @media (max-width: 480px) { 
-            #calculation_example{
-                border-right: 0 !important;
-                border-left: 0 !important;
-                border-top: 1px solid gray !important;
-                border-bottom: 1px solid gray !important; 
-            }
-
-            #botao-receita{
-                margin-left: 0 !important;
-            }
-
-            .arrow{
-                top: 30vh !important;
-            }
-
-            h1{
-                font-size: xx-large !important;
-                line-height: normal !important;
-                margin: 0 !important;
-            }
-
-            h4{
-                text-align: center !important;
-            }
-
-            .table_align{
-                margin-top: 0px !important;
-            }
-        }
-
-        * {
-            font-family: 'Quicksand', sans-serif;
-            font-size: 1em;
-            line-height: 24px;
-        }
-        .arrow{
-            position: absolute;
-            top: 20vh;
-            left: 50%;
-            transform: translate(-50%,-50%);
-        }
-        .arrow span{
-            display: block;
-            width: 30px;
-            height: 30px;
-            border-bottom: 5px solid black;
-            border-right: 5px solid black;
-            transform: rotate(45deg);
-            margin: -10px;
-            animation: animate 2s infinite;
-        }
-        .arrow span:nth-child(2){
-            animation-delay: -0.2s;
-        }
-        .arrow span:nth-child(3){
-            animation-delay: -0.4s;
-        }
-        @keyframes animate {
-            0%{
-                opacity: 0;
-                transform: rotate(45deg) translate(-20px,-20px);
-            }
-            50%{
-                opacity: 1;
-            }
-            100%{
-                opacity: 0;
-                transform: rotate(45deg) translate(20px,20px);
-            }
-        }
-        h2 { font-size: 20px; letter-spacing: -1px; color: #000C; text-shadow: 1px 1px 0 #000, margin: 10px 0 24px; text-align: justify; line-height: 30px}
-        .reserve_info{padding: 0.7vw;border: 1px solid gray;margin-bottom: 2vh}
-        h1{color:#000C;font-family: 'Poppins', sans-serif; font-size: 32px; font-weight: normal; line-height: 32px; margin: 10px 0 20px; text-shadow: 2px 2px 0 #000, margin: 10px 0 24px; text-align: center;}
-        p {margin: 0 0 24px; text-align: justify; text-indent: 40px;}
-        label{margin: 0 0 24px;width: 100%;}
-        .row{margin-top: 4vh;}#infos-funcionarios{display: none;margin-left: 4vw;}.content{width: 80vw;margin: 0 auto;}.dot {height: 25px;width: 25px;border-radius: 50%;display: inline-block;margin-left: 50%;}.tab-content{height: 100%;}blockquote{border-left: 3px solid rgba(42, 42, 42, 0.15);padding-top: 0;padding-bottom:0;padding: 10px 20px;margin: 0 0 20px;font-size: 17.5px;font-size: 19px;line-height: 26px;color: #808080;}.info_text{height: 100%}.info_text>p{text-indent: 4em;}
-        /* Chart.js */
-        @keyframes chartjs-render-animation{from{opacity:.99}to{opacity:1}}.chartjs-render-monitor{animation:chartjs-render-animation 1ms}.chartjs-size-monitor,.chartjs-size-monitor-expand,.chartjs-size-monitor-shrink{position:absolute;direction:ltr;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1}.chartjs-size-monitor-expand>div{position:absolute;width:1000000px;height:1000000px;left:0;top:0}.chartjs-size-monitor-shrink>div{position:absolute;width:200%;height:200%;left:0;top:0}
-    </style>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
     <main>
         <div class="container-fluid" style="padding: 0 8vw 0 8vw;">
@@ -195,8 +95,8 @@
                             <div class="col col-md-12">
                                 <hr />
                                 <h1  style="text-align: center;">Quer saber mais sobre reseverva de emergência?</h1>
-                                <a id="res" href="#collapse" class="nav-toggle">
-                                    <div style="width:100%;height:8vh">                                
+                                <a id="res" href="#collapse" class="nav-toggle" style="min-height: 18vh;display: block;">
+                                    <div style="width:100%;">                                
                                         <div  id="arrowR" class="arrow">
                                             <span></span>
                                             <span></span>
@@ -212,7 +112,7 @@
                                         <img src="https://images.pexels.com/photos/12619/house-money-capitalism-fortune-12619.jpg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" style="width: 100%;margin-top: 5vh;">
                                     </div>
                                     <div class="col-md-6" style="border-left: 1px solid rgba(42, 42, 42, 0.15);}">
-                                        <p> Antes de pensarmos em investimentos, aposentadoria ou abrir uma empresa, precisamos garantir que se tudo der errado, você ainda conseguirá manter o seu padrão de vida por algum tempo. Em geral, usamos, em geral, o tempo de 3 à 6 meses como boas quantidades de reserva de emergência. </p>
+                                        <p class="first-paragraph"> Antes de pensarmos em investimentos, aposentadoria ou abrir uma empresa, precisamos garantir que se tudo der errado, você ainda conseguirá manter o seu padrão de vida por algum tempo. Em geral, usamos o tempo de 3 à 6 meses como boas quantidades de reserva de emergência. </p class="first-paragraph">
                                         <h2  style="font-size: 18px"> Agora, o que significa essa tal de reserva de emergência? 
                                             <blockquote style="margin-top:2vh">É o dinheiro que uso se eu precisar de um sapato novo ou trocar de carro?</blockquote>
                                             Com certeza absoluta, <span style="font-weight: bolder;">NÃO!</span>
@@ -229,7 +129,7 @@
                                 </div>
                                 <div class="row reserve_info">
                                     <div class="col-md-4 col-sm-12" style="padding: 1vw 2vw 2vw 2vw;">
-                                        <p style="text-align: justify;display: block;margin-top: 12vh;">Digamos que estes, ao lado, são seus gastos mensais recorrentes, ou seja, esses são os valores que você gasta fixamente, todos os meses e que você não pode "sobreviver" sem.</p> 
+                                        <p style="text-align: justify;display: block;margin-top: 12vh;">Digamos que estes, ao lado, são seus gastos mensais recorrentes, ou seja, esses são os valores que você gasta fixamente, todos os meses e que não pode "sobreviver" sem.</p> 
                                         <p style="text-align: justify;display: block;">Por isso neste caso não colocamos, por exemplo os gastos com carro (especificamente), mas se no seu caso é algo totalmente necessário para o seu dia-a-dia entra nessa conta também.</p>
                                     </div>
                                     <div id="calculation_example" class="col-md-4 col-sm-12" style="border-right: 1px solid gray;border-left: 1px solid gray;">
@@ -352,8 +252,8 @@
                             <div class="col col-md-12">
                                 <hr />
                                 <h1  style="text-align: center;">Quer saber mais sobre reseverva de aposentadoria?</h1>
-                                <a id="apos" href="#collapseA" class="nav-toggle">
-                                    <div style="width:100%;height:8vh">                                
+                                <a id="apos" href="#collapseA" class="nav-toggle" style="min-height: 18vh;display: block;">
+                                    <div style="width:100%;">                                
                                         <div id="arrowA" class="arrow">
                                             <span></span>
                                             <span></span>
@@ -369,7 +269,7 @@
                                         <img src="https://images.pexels.com/photos/1642883/pexels-photo-1642883.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" style="width: 100%;margin-top: 10vh;">
                                     </div>
                                     <div class="col-md-6" style="border-left: 1px solid rgba(42, 42, 42, 0.15);}">
-                                        <p> Quando pensamos em aposentadoria, precisamos antes de mais nada parar de pensar no INSS. Pensar que o governo irá garantir que você tenha uma "melhor idade" boa e com tudo o que você precisa poder ser um grande erro. Para ver como isso é quase impossível, basta pensar em quantas pessoas temos hoje no Brasil aposentados, quantas pessoas irão se aposentar nos próximos ano e qual é o número de trabalhadores ativos no mercado (Contribuintes), simplesmente a conta não fecha. </p>
+                                        <p class="first-paragraph"> Quando pensamos em aposentadoria, precisamos antes de mais nada parar de pensar no INSS. Pensar que o governo irá garantir que você tenha uma "melhor idade" confortável e com tudo o que você precisa poder ser um grande erro. Para ver como isso é quase impossível, basta pensar em quantas pessoas temos hoje no Brasil aposentados, quantas pessoas irão se aposentar nos próximos ano e qual é o número de trabalhadores ativos no mercado (Contribuintes), simplesmente a conta não fecha. </p>
                                         <h2  style="font-size: 18px"> Mas como assim, a conta não fecha? 
                                             <blockquote style="margin-top:2vh">O Brasil tem hoje cerca de 30 Milhões de aposentados e pensionistas.<br />
                                             Em média, essas pessoas recebem cerca de <span style="font-weight: bolder;">R$1479,00</span> por mês! <br />
@@ -385,7 +285,7 @@
                                         <blockquote style="margin-top:2vh">Aqui vai uma notícia triste, <br />
                                             se você ganha R$3000,00 e apenas guardar os R$1200,00, todos os meses, você vai precisar de 41 anos pra se aposentar 😫</blockquote>
                                         <p>Na aposentadoria, assim como em qualquer outro objetivo financeiro, é importante dizer que você vai precisar se esforçar agora para chegar em um patamar melhor amanhã. Por isso, é importante usar os valores que colocamos aqui como um norte para começar a se orgizar e à partir disso começar a crescer.</p>
-                                        <p>Por isso, para se aposentar, querendo ou não, você vai ter que gardar sempre mais dinheiro, para que esse tempo diminua. Preparamos uma simulação para você entender do que estamos falando:</p>                                
+                                        <p>Por isso, para se aposentar, querendo ou não, você vai ter que guardar sempre mais dinheiro, para que esse tempo diminua. Preparamos uma simulação para você entender do que estamos falando:</p>                                
                                     </div>
                                 </div>
                                 <div class="row reserve_info">
@@ -442,8 +342,8 @@
                                         </div>
                                     </div>
                                     <div class="col-md-4 col-sm-12" style="padding: 1vw 2vw 2vw 2vw;">
-                                        <p style="text-align: justify;display: block;margin-top: 12vh;">Com estes valores de exemplo, podemos ver que a quantidade de dinheiro que você guarda faz toda a diferença, quando falamos de aposentadoria.</p> 
-                                        <p style="text-align: justify;display: block;margin-top: 12vh;">A ideia aqui não é basicamente guardar dinheiro, é separar um montante todos os meses e investir para poder se aposentar. </p> 
+                                        <p style="text-align: justify;display: block;">Com estes valores de exemplo, podemos ver que a quantidade de dinheiro que você guarda faz toda a diferença, quando falamos de aposentadoria.</p> 
+                                        <p style="text-align: justify;display: block;">A ideia aqui não é basicamente guardar dinheiro, é separar um montante todos os meses e investir para poder se aposentar. </p> 
                                     </div>
                                 </div>
                             </div> 
@@ -493,8 +393,8 @@
                             <div class="col col-md-12">
                                 <hr />
                                 <h1  style="text-align: center;">Quer saber mais sobre acumular patrimônio?</h1>
-                                <a id="inves" href="#collapseI" class="nav-toggle">
-                                    <div style="width:100%;height:8vh">                                
+                                <a id="inves" href="#collapseI" class="nav-toggle" style="min-height: 18vh;display: block;">
+                                    <div style="width:100%;">                                
                                         <div  id="arrowI" class="arrow">
                                             <span></span>
                                             <span></span>
@@ -510,7 +410,7 @@
                                         <img src="https://images.pexels.com/photos/36104/pexels-photo.jpg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260" style="width: 100%;margin-top: 10vh;">
                                     </div>
                                     <div class="col-md-6" style="border-left: 1px solid rgba(42, 42, 42, 0.15);}">
-                                        <p> Quando falamos em investimentos, não estamos falando em pegar todo seu dinheiro, aplicar em bolsa de valores, fazer loucuras, ganhar milhares ou milhões de reais do dia para a noite ou mesmo deixar na poupança "rendendo." </p>
+                                        <p class="first-paragraph"> Quando falamos em investimentos, não estamos falando em pegar todo seu dinheiro, aplicar em bolsa de valores, fazer loucuras, ganhar milhares ou milhões de reais do dia para a noite ou mesmo deixar na poupança "rendendo." </p class="first-paragraph">
                                         <h2  style="font-size: 18px"> Mas então, se não é disso que estamos falando, o que significam esses tais de investimentos? 
                                             <blockquote style="margin-top:2vh">Queremos apenas garantir que em algum momento de vida você tenha liberdade financeira para decidir sua própria vida!</blockquote>
                                         </h2>  
@@ -592,8 +492,8 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <p>Como você pode ver, não importa muito qual investimento você escolha, em geral, todos são melhores que a poupança. Quanto falamos em rentabilidade, manter o dinheiro na poupança só garante que você vai impatar seu patrimônio com a inflação que está prevista para 3,60% em 2020!</p>
-                                        <p>Traduzindo, manter o dinheiro na poupança só garante (até o momento) que seus R$1000,00 continuem valendo R$1000,00 no final do ano. Os outros investimentos fazem mais do que isso, garantem que o valor do seu dinheiro e ainda aumenta o montante. </p>
-                                        <blockquote>Mas e o lucro com ações? Por que não tá mostrando nada?</blockquote>
+                                        <p>Traduzindo, manter o dinheiro na poupança só garante (até o momento) que seus R$1000,00 continuem valendo R$1000,00 no final do ano. Os outros investimentos fazem mais do que isso, garantem o valor do seu dinheiro e ainda aumenta o montante. </p>
+                                        <blockquote>Mas cadê o lucro com ações? Quero investir na bolsa!</blockquote>
                                         <p>Quando falamos em lucro sobre ações, temos uma série de fatores que devemos considerar, principalmente em relação modelo de investimento aplicado (Day trade, swing trade, buy and hold, etc). A questão aqui não é mostrar que investindo em ações você irá ganhar mais dinheiro (e provavelmente vá mesmo), mas sim mostrar que é um tipo de investimento arriscado.</p>
                                         <blockquote>Então não vou investir em ações?</blockquote>
                                         <p>Também não é por ai. O investimento ser arriscado, não quer dizer que não é/serve para você, apenas quer dizer que para ver lucros reais com ele, você precisa estudar sobre o investimento e estar preparado financeira e emocionalmente. Quando você sabe bem o que está fazendo, conhece os riscos e as oportunidades a chance de sucesso é muito maior. </p>
@@ -671,7 +571,7 @@
                                         <img src="https://images.pexels.com/photos/669615/pexels-photo-669615.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" style="width: 100%;margin-top: 5vh;">
                                     </div>
                                     <div class="col-md-6" style="border-left: 1px solid rgba(42, 42, 42, 0.15);}">
-                                        <p> Quando falamos em empreender, geralmente as pessoas só levam em consideração as partes "boas" de abrir uma empresa: </p>
+                                        <p class="first-paragraph"> Quando falamos em empreender, geralmente as pessoas só levam em consideração as partes "boas" de abrir uma empresa: </p class="first-paragraph">
                                             <blockquote style="margin-top:2vh">
                                                 <ul>
                                                     <li>
@@ -708,10 +608,10 @@
                                             Além disso, são poucas também as pessoas que iniciam um negócio tendo dinheiro para fazer os investimentos que um negócio precisa para iniciar.
                                         </p>
                                         <h2  style="font-size: 18px">  
-                                            Mas que diferença isso faz? Se eu sair do meu emprego pra abrir uma empresa, vou ter o dinheiro da recisão para usar!
+                                            Mas que diferença isso faz? Se eu sair do meu emprego pra abrir uma empresa, vou ter o dinheiro da rescisão para usar!
                                         </h2> 
                                         <p>
-                                            Sim, você vai ter a recisão, mas pra saber se esse dinheiro vai salvar a pátria, vamos a três perguntas:
+                                            Sim, você vai ter a rescisão, mas pra saber se esse dinheiro vai salvar a pátria, vamos a três perguntas:
                                         </p>
                                         <blockquote style="margin-top:2vh">
                                             <ul>
@@ -729,7 +629,7 @@
                                         <p>
                                             Essas são as maiores questões quando falamos em trocar nosso momento de CLT por um de empreendedor.
                                             Vamos a um exemplo para ficar mais claro, aqui vamos usar um ramo que esta na "moda" e vem criando muitas novas empresas, o ramo de confeitaria.
-                                            Neste exemplo, vamos considerar uma pessoa que tem um custo de vida mensal de R$2.000,00 por mês e que ao sair da empresa que trabalha irá receber o valor de R$5.000,00 na recisão. 
+                                            Neste exemplo, vamos considerar uma pessoa que tem um custo de vida mensal de R$2.000,00 por mês e que ao sair da empresa que trabalha irá receber o valor de R$5.000,00 na rescisão. 
                                             Agora vamos as contas:
                                         </p>  
                                         <h2  style="font-size: 18px">
@@ -779,7 +679,7 @@
                                     </div>
                                     <div class="col-md-4 col-sm-12" style="padding: 1vw 2vw 2vw 2vw;">
                                         <p style="text-align: justify;display: block;margin-top: 12vh;">
-                                            Como podemos ver, no pior dos cenários (Gastando um pouco mais com equipamentos) o investimento inicial é bem grande. Mesmo usando o dinheiro da recisão, ainda sim iria faltar dinheiro para pagar tudo.
+                                            Como podemos ver, no pior dos cenários (Gastando um pouco mais com equipamentos) o investimento inicial é bem grande. Mesmo usando o dinheiro da rescisão, ainda sim iria faltar dinheiro para pagar tudo.
                                         </p>
                                     </div>
                                 </div>
@@ -791,20 +691,20 @@
                                         <blockquote style="margin-top:2vh">
                                             Abrir uma empresa é colocar dinheiro em algo que você acredita, com a esperança, e não com a garantia, de recuperar o dinheiro em pouco tempo!
                                         </blockquote>
-                                        <p style="text-align: justify;display: block;margin-top: 12vh;">
+                                        <p style="text-align: justify;display: block;">
                                             Além disso, quando uma pessoa diz a outra para empreender, que é um mercado bom, que não é tão difícil e que se ganha muito dinheiro, geralmente as pessoas ou não entendem nada de empresas ou tem uma visão muito pequena do que seja empreender.
                                         </p>
-                                        <p style="text-align: justify;display: block;margin-top: 12vh;">
+                                        <p style="text-align: justify;display: block;">
                                             Exemplificando, para que o nosso negócio de bolos de pote comece a produzir bolos em escala comercial, é possível que sejam necessários alguns investimentos em equipamentos, como por exemplo:
                                         </p>
                                         <ul>
                                             <li>Um forno maior: para assar mais bolos ao mesmo tempo ou assar mais massa ao mesmo tempo (R$1.000,00 em média)</li>
                                             <li>Uma batedeira: para agilizar o tempo de preparação das massas (R$350,00)</li>
                                             <li>Formas de bolo: para agilizar o processo de assar os bolos (R$80,00 - em média, conjunto c/ 4)</li>
-                                            <li>Uma geladeira maior ou frizer: para armazenar os bolos prontos (R$3.000,00 - em média p/ geladeira & R$1.300,00 em média para um freezzer)</li>
+                                            <li>Uma geladeira maior ou freezer: para armazenar os bolos prontos (R$3.000,00 - em média p/ geladeira e R$1.300,00 em média para um freezzer)</li>
                                             <li>Bolsa, caixa termica ou coisas do tipo: para levar os bolos até os clientes em bom estado (R$50,00 - em média)</li>
                                         </ul>
-                                        <p style="text-align: justify;display: block;margin-top: 12vh;">
+                                        <p style="text-align: justify;display: block;">
                                             Além de equipamentos, precisaríaos de materiais básicos para fazer os primeiros bolos:
                                         </p>
                                         <ul>
@@ -814,7 +714,7 @@
                                             <li>Se você vai vender na rua, colheres ou garfos plásticos (Para o cliente conseguir comer na hora) (R$5,00 - em média p/ 50)</li>
                                             <li>Adesivos com sua marca para colocar no pote (Se você for fazer a arte por conta própria) (R$170,00 - p/ 500 adesivos)</li>
                                         </ul>
-                                        <p style="text-align: justify;display: block;margin-top: 12vh;">
+                                        <p style="text-align: justify;display: block;">
                                             E ainda é preciso pensar em como chegar até os clientes, em todos os sentidos:
                                         </p>
                                         <ul>    
@@ -824,12 +724,12 @@
                                             <li>Dinheiro em caixa para dar troco! (R$50,00 trocado, no mínimo para começar as vendas)</li>
                                         </ul>
                                         <p>
-                                            Como podemos ver, um negócio que em primeiro momento parece simples, tem muitas coisas para se pensar ao abrir e principalmente, muito denheiro de investimento necessário.
+                                            Como podemos ver, um negócio que em primeiro momento parece simples, tem muitas coisas para se pensar ao abrir e principalmente, muito dinheiro de investimento necessário.
                                             Pelas contas médias que fizemos, para abrir um negócio (já totalmente funcional) seria necessário um investimento de aproximadamente: R$5.145,00 no pior cenário (comprando a geladeira) e R$3.445,00 no melhor cenário (Comprando o freezer).
                                             Aqui falando apenas operacionalmente, sem falar sobre os impostos e outros custos com as documentações necessárias para abrir uma empresa.
                                         </p>
                                         <p>           
-                                            Em ambos os casos vemos que o dinheiro da recisão seria praticamente suficiente para cobrir os custos iniciais do negócio, mas você ficaria sem dinheiro ou praticamente sem dinheiro.
+                                            Em ambos os casos vemos que o dinheiro da rescisão seria praticamente suficiente para cobrir os custos iniciais do negócio, mas você ficaria praticamente sem dinheiro.
                                             Pensando nisso, vamos fazer outras contas:
                                             <blockquote style="margin-top:2vh">
                                                 <ul>
@@ -839,7 +739,7 @@
                                             </blockquote>
                                         </p>
                                         <p>
-                                            E nesse ponto é que vemos a importância da reserva de emergência. Se você não tirar todo o seu custo básico diretamente do negócio durante os primeiros meses, você não vai contrair dívidas.
+                                            É nesse ponto é que vemos a importância da reserva de emergência. Se você não tirar todo o seu custo básico diretamente do negócio durante os primeiros meses, você não vai contrair dívidas.
                                             Além disso, se você já tiver o dinheiro incial (pelo menos os R$3.000,00) reservados para abrir sua empresa, quando você iniciar o negócio, praticamente todo o dinheiro vai ser lucro do negócio. 
                                             porquê você simplesmente se preparou para os gastos que o negócio tem e não vai precisar das vendas iniciais para sobreviver.
                                         </p>
@@ -867,7 +767,7 @@
                                             </ul>
                                         </p>
                                         <p>
-                                            E de extrema importância manter a proporção de dinheiro para você e para a empresa porquê, apesar de muita gente esquecer, as contas da empresa chegam, da mesma forma que as suas
+                                            É de extrema importância manter a proporção de dinheiro para você e para a empresa porquê, apesar de muita gente esquecer, as contas da empresa chegam, da mesma forma que as suas
                                             e quanto mais você vende, mais despesas mensais vai ter. Se você trabalhar apenas para pagar contas, talvez abrir uma empresa não seja a melhor escolha. 
                                             Não pegue o dinheiro que é da empresa para você, isso é o que cria a bola de neve das dívidas, que quebra empresas!
                                         </p>
@@ -881,13 +781,13 @@
             </div>
         </div>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-        <script src="popper.min.js"></script>
+        <script src="project-min/js/popper.min.js"></script>
         <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
         <script async="" src="//www.google-analytics.com/analytics.js"></script>
-        <script src="utils.js"></script>
         <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
-        <script src="calculador-salario.js"></script>
-        <script src="maskMoney.js"></script>
+        <script src="js/utils.js"></script>
+        <script src="js/salary_divisor.js"></script>
+        <script src="js/maskMoney.js"></script>
         <script>
             $(document).ready(function() {
                 validate();
